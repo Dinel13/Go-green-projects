@@ -1,0 +1,19 @@
+{
+  "name": "go-green-projects",
+  "version": "1.0.0",
+  "description": "backend ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dinel13/Go-green-projects.git"
+  },
+  "author": "salahuddin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dinel13/Go-green-projects/issues"
+  },
+  "homepage": "https://github.com/Dinel13/Go-green-projects#readme"
+}
