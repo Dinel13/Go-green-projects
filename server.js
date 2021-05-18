@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: false, limit: "20mb" }));
 
 app.use(cors("*"));
 
-app.use("/", (req, res, next) => {
+app.use("/test", (req, res, next) => {
   res.status(200).json({ message: "api is working" });
 });
 
