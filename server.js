@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: false, limit: "20mb" }));
 
 app.use(cors("*"));
 
-db.execute("SELECT * FROM users")
+db.execute((`SELECT * FROM users WHERE`))
   .then((result) => {
     console.log(result);
   })
