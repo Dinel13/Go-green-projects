@@ -12,14 +12,6 @@ app.use(express.urlencoded({ extended: false, limit: "20mb" }));
 
 app.use(cors("*"));
 
-// db.execute(`SELECT * FROM users WHERE`)
-//   .then((result) => {
-//     console.log(result);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
-
 app.use("/test", (req, res, next) => {
   res.status(200).json({ message: "api is working" });
 });
@@ -30,11 +22,10 @@ app.use("/api/user", userRoute);
 //jika tidak ada tabel di database akan dibaut dari model
 sequelize
   .sync()
-  .then((res) => {
-    console.log(res)
-    app.listen(process.env.PORT || 8080);
-  } )
+  .then((res) => {})
   .catch((err) => console.log(err));
+
+app.listen(process.env.PORT || 8080);
 
 // const url = "mongodb://127.0.0.1:27017/green-project";
 // mongoose
