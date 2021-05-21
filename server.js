@@ -1,29 +1,12 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-
-const userRoute = require("./routes/user");
-
-const app = express();
-
-app.use(express.json({ limit: "20mb" }));
-app.use(express.urlencoded({ extended: false, limit: "20mb" }));
-
-app.use(cors("*"));
-
-app.use("/test", (req, res, next) => {
-  res.status(200).json({ message: "api is working" });
-});
-
-app.use("/api/user", userRoute);
-
-const url = "mongodb://127.0.0.1:27017/green-project";
-mongoose
-  .connect(url, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+function fetchUsername() {
+  return new Promise((resolve, reject) => {
+      setTimeout(() => {
+          resolve('JSUser');
+      }, 3000);
   })
-  .then((result) => {
-    app.listen(process.env.PORT || 8080);
-  })
-  .catch((err) => console.log(err));
+}
+
+console.log("Fetching username...");
+const username = fetchUsername();
+console.log(`You are logged in as ${username}`);
+console.log("Welcome!");
