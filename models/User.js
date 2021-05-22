@@ -9,7 +9,7 @@ module.exports = class User {
   }
 
   save() {
-   return db.execute(
+    return db.execute(
       "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
       [this.name, this.email, this.password]
     );
@@ -19,5 +19,10 @@ module.exports = class User {
     return db.execute("SELECT * FROM users WHERE users.email = ?", [email]);
   }
 
+  static updatePassword(password, email) {
+    return db.execute(
+      "UPDATE users SET password = ? WHERE email = ?", [password, email]
+    );
+  }
   static deleteById() {}
 };

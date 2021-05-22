@@ -85,7 +85,6 @@ const login = async (req, res, next) => {
       existingUser[0][0].password
     );
   } catch (err) {
-    console.log(err);
     const error = new HttpError("Tidak bisa masuk, coba lagi nanti.", 500);
     return next(error);
   }
@@ -142,7 +141,7 @@ const forgotPassword = async (req, res, next) => {
       { email: user[0][0].email },
       process.env.JWT_RESET_PASSWORD,
       {
-        expiresIn: "10m",
+        expiresIn: "20m",
       }
     );
   } catch (err) {
@@ -174,17 +173,64 @@ const forgotPassword = async (req, res, next) => {
   };
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log(error);
       return next();
     } else {
-      console.log("Email sent: " + info.response);
       return res.status(201).json({
         message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
+        token: token,
       });
     }
+  });
+};
+
+const setNewPassword = async (req, res, next) => {
+  const token = req.params.token;
+  const { newPassword, newPasswordConf } = req.body;
+
+  if (newPassword !== newPasswordConf) {
+    return next(
+      new HttpError("passoword harus sama dengan konfirmasi password", 401)
+    );
+  }
+
+
+  let decodedToken;
+  try {
+    decodedToken = await jwt.verify(
+      token.toString(),
+      process.env.JWT_RESET_PASSWORD
+    );
+  } catch (error) {
+    const err = new HttpError("Tidak bisa mereset, coba lagi nantit.", 500);
+    return next(err);
+  }
+
+  if (!decodedToken) {
+    const err = new HttpError("Token sudah expire, coba lagi nanti.", 500);
+    return next(err);
+  }
+
+  let HasPassword;
+  try {
+    HasPassword = await bcrypt.hash(newPassword, 12);
+  } catch (err) {
+    const error = new HttpError("Gagal mereset, coba lagi nati", 500);
+    return next(error);
+  }
+
+  let user;
+  try {
+    user = await User.updatePassword(HasPassword, decodedToken.email);
+  } catch (error) {
+    const err = new HttpError("Tidak bisa mereset, coba lagi nanti.", 500);
+    return next(err);
+  }
+  res.status(201).json({
+    message: "berhasil mereset password",
   });
 };
 
 exports.signup = signup;
 exports.login = login;
 exports.forgotPassword = forgotPassword;
+exports.setNewPassword = setNewPassword;
