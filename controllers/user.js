@@ -32,7 +32,7 @@ const signup = async (req, res, next) => {
 
   let result;
   try {
-    result = await createuser.save();    
+    result = await createuser.save();
   } catch (err) {
     return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
   }
@@ -55,9 +55,11 @@ const signup = async (req, res, next) => {
     return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
   }
 
-  res
-    .status(201)
-    .json({ userId: saveUser[0][0].id, name: saveUser[0][0].name, token: token });
+  res.status(201).json({
+    userId: saveUser[0][0].id,
+    name: saveUser[0][0].name,
+    token: token,
+  });
 };
 
 const login = async (req, res, next) => {
@@ -127,7 +129,10 @@ const forgotPassword = async (req, res, next) => {
   }
 
   if (user[0].length === 0) {
-    const error = new HttpError("Email tidak ditemukan, silahkan mendaftar.", 404);
+    const error = new HttpError(
+      "Email tidak ditemukan, silahkan mendaftar.",
+      404
+    );
     return next(error);
   }
 
@@ -147,35 +152,37 @@ const forgotPassword = async (req, res, next) => {
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
-    host: 'smtp.gmail.com',
+    host: "smtp.gmail.com",
     auth: {
-      type: 'OAuth2',
+      type: "OAuth2",
       user: process.env.MAIL_USERNAME,
       pass: process.env.MAIL_PASSWORD,
       clientId: process.env.OAUTH_CLIENTID,
       clientSecret: process.env.OAUTH_CLIENT_SECRET,
-      refreshToken: process.env.OAUTH_REFRESH_TOKEN
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
     },
   });
-  
+
   const mailOptions = {
     from: "fadullah2021@gmail.com",
     to: email,
-    subject: "Invoices due",
-    html: '<h1>this is a test mail.</h1>'// plain text body
+    subject: "Password reset",
+    html: `
+      <p>Kamu telah meminta untuk mereset password</p>
+      <p>KLik tautan ini <a href="http://localhost:3000/reset/${token}">link</a> untuk membuat password baru.</p>
+    `,
   };
-
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
       console.log(error);
       return next();
     } else {
       console.log("Email sent: " + info.response);
-      return res.status(201).json({ message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`});
+      return res.status(201).json({
+        message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
+      });
     }
   });
-
-  
 };
 
 exports.signup = signup;
