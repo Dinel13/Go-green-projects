@@ -27,6 +27,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.9",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.6.0",
     "sequelize": "^6.6.2"
   },
   "devDependencies": {
