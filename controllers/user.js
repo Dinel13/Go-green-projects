@@ -13,7 +13,7 @@ const signup = async (req, res, next) => {
   try {
     existingUser = await User.findByEmail(email);
   } catch (err) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
+    return next(new HttpError("Gagal mendaftar, coba lagi nantit", 500));
   }
 
   if (existingUser && existingUser[0].length !== 0) {
@@ -24,7 +24,7 @@ const signup = async (req, res, next) => {
   try {
     HasPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    const error = new HttpError("Gagal mendaftar, coba lagi nati", 500);
+    const error = new HttpError("Gagal mendaftar, coba lagi natiy", 500);
     return next(error);
   }
 
@@ -34,14 +34,14 @@ const signup = async (req, res, next) => {
   try {
     result = await createuser.save();
   } catch (err) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
+    return next(new HttpError("Gagal mendaftar, coba lagi nantiu", 500));
   }
 
   let saveUser;
   try {
     saveUser = await User.findByEmail(email);
   } catch (err) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
+    return next(new HttpError("Gagal mendaftar, coba lagi nantii", 500));
   }
 
   let token;
@@ -52,7 +52,7 @@ const signup = async (req, res, next) => {
       { expiresIn: "100d" }
     );
   } catch (error) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nanti", 500));
+    return next(new HttpError("Gagal mendaftar, coba lagi nantio", 500));
   }
 
   res.status(201).json({
