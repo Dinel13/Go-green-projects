@@ -9,6 +9,7 @@ const HttpError = require("../models/http-error");
 
 const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
+
   let existingUser;
   try {
     existingUser = await User.findByEmail(email);
@@ -16,7 +17,7 @@ const signup = async (req, res, next) => {
     return next(new HttpError("Gagal mendaftar, coba lagi nantit", 500));
   }
 
-  if (existingUser && existingUser[0].length !== 0) {
+  if (existingUser) {
     return next(new HttpError("User sudah ada, silahkan masuk", 422));
   }
 
@@ -43,21 +44,21 @@ const signup = async (req, res, next) => {
   } catch (err) {
     return next(new HttpError("Gagal mendaftar, coba lagi nantii", 500));
   }
-
   let token;
   try {
     token = jwt.sign(
-      { userId: saveUser[0][0].id, email: saveUser[0][0].email },
+      { userId: saveUser.id, email: saveUser.email },
       process.env.JWT_KEY,
       { expiresIn: "100d" }
     );
   } catch (error) {
+    console.log(error);
     return next(new HttpError("Gagal mendaftar, coba lagi nantio", 500));
   }
 
   res.status(201).json({
-    userId: saveUser[0][0].id,
-    name: saveUser[0][0].name,
+    userId: saveUser.id,
+    name: saveUser.name,
     token: token,
   });
 };
@@ -192,7 +193,6 @@ const setNewPassword = async (req, res, next) => {
       new HttpError("passoword harus sama dengan konfirmasi password", 401)
     );
   }
-
 
   let decodedToken;
   try {

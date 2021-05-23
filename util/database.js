@@ -45,25 +45,15 @@ const createPool = async () => {
   }
 };
 
-const ensureSchema = async pool => {
-  // Wait for tables to be created (if they don't already exist).
-  await pool.query(
-    `CREATE TABLE IF NOT EXISTS users
-      ( id INT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL
-      password VARCHAR(255) NOT NULL, PRIMARY KEY (id) );`
-  );
-  console.log("Ensured that table 'votes' exists");
-};
+// const ensureSchema = async pool => {
+//   // Wait for tables to be created (if they don't already exist).
+//   await pool.query(
+//     `CREATE TABLE IF NOT EXISTS users
+//       ( id INT AUTO_INCREMENT, name VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL
+//       password VARCHAR(255) NOT NULL, PRIMARY KEY (id) );`
+//   );
+//   console.log("Ensured that table 'votes' exists");
+// };
 
-const poolDb = async () => {
-  await createPool().then(async pool => {
-    await ensureSchema(pool);
-    return pool;
-  })
-  .catch(err => {
-    logger.error(err);
-    throw err;
-  });
-};
 
-module.exports = poolDb;
+module.exports = createPool;
