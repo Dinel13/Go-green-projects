@@ -74,7 +74,7 @@ const login = async (req, res, next) => {
     return next(error);
   }
 
-  if (existingUser[0].length === 0) {
+  if (!existingUser) {
     const error = new HttpError("Credentials tidak cocok.", 401);
     return next(error);
   }
@@ -83,7 +83,7 @@ const login = async (req, res, next) => {
   try {
     isValidPassword = await bcrypt.compare(
       password,
-      existingUser[0][0].password
+      existingUser.password
     );
   } catch (err) {
     const error = new HttpError("Tidak bisa masuk, coba lagi nanti.", 500);
@@ -111,8 +111,8 @@ const login = async (req, res, next) => {
   }
 
   res.json({
-    userId: existingUser[0][0].id,
-    name: existingUser[0][0].name,
+    userId: existingUser.id,
+    name: existingUser.name,
     token: token,
   });
 };
