@@ -128,7 +128,7 @@ const forgotPassword = async (req, res, next) => {
     return next(error);
   }
 
-  if (user[0].length === 0) {
+  if (!user) {
     const error = new HttpError(
       "Email tidak ditemukan, silahkan mendaftar.",
       404
@@ -139,7 +139,7 @@ const forgotPassword = async (req, res, next) => {
   let token;
   try {
     token = jwt.sign(
-      { email: user[0][0].email },
+      { email: user.email },
       process.env.JWT_RESET_PASSWORD,
       {
         expiresIn: "20m",
