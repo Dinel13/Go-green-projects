@@ -16,6 +16,12 @@ app.use("/test", (req, res, next) => {
 
 app.use("/api/user", userRoute);
 
+app.use((error, req, res, next) => {
+  res
+    .status(error.code || 500)
+    .json({ message: error.message || "error tidak diketahui" });
+});
+
 //sync to singkronus model yang didefine dengan di database
 //jika tidak ada tabel di database akan dibaut dari model
 // sequelize
@@ -23,5 +29,5 @@ app.use("/api/user", userRoute);
 //   .then((res) => {})
 //   .catch((err) => console.log(err));
 
-app.listen(process.env.PORT || 8081);
+app.listen(process.env.PORT || 8080);
 
