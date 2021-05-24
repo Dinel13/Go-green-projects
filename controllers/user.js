@@ -178,7 +178,7 @@ const forgotPassword = async (req, res, next) => {
     } else {
       return res.status(201).json({
         message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
-        token: token,
+       // token: token,
       });
     }
   });
