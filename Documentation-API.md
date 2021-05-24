@@ -17,8 +17,8 @@ Provide name, email and password of Account to be created.
 
 ```json
 {
-    "name": "Bangkit"
-    "email": "bangkit@test.com"
+    "name": "Bangkit",
+    "email": "bangkit@test.com",
     "name": "Bangkit21"
 }
 ```
@@ -49,7 +49,6 @@ Provide name, email and password of Account to be created.
 ```json
 {
     "message": "User sudah ada, silahkan masuk"
-}`
 }
 ```
 
@@ -75,14 +74,14 @@ Provide email and password of Account to be sign in.
 
 ```json
 {
-    "email": "bangkit@test.com"
+    "email": "bangkit@test.com",
     "name": "Bangkit21"
 }
 ```
 
 ## Success Response
 
-**Condition** : If everything is OK and an Account is already exist.
+**Condition** : If everything is OK, an Account is already exist and password is valid.
 
 **Code** : `200`
 
@@ -106,7 +105,6 @@ Provide email and password of Account to be sign in.
 ```json
 {
    "message": "Credentials tidak cocok."
-}`
 }
 ```
 
@@ -130,7 +128,7 @@ Provide email and password of Account to be sign in.
 
 # Forgot User's password
 
-User forgot account password. link to reset their password will be sent to their own email.
+Forgot user's account password. link to reset their password will be sent to their own email.
 
 **URL** : `https://our-philosophy-314515.et.r.appspot.com/api/user/reset`
 
@@ -174,7 +172,6 @@ Provide email of Account that forgot password.
 ```json
 {
    "message": "Email tidak ditemukan, silahkan mendaftar."
-}`
 }
 ```
 
@@ -194,7 +191,7 @@ Reset user's password use link that they get in their own email.
 
 **Data must provided**
 
-Provide password and password confirmation of Account that want to be reset. both must be match.
+Provide new password and new password confirmation of Account that want to be reset. both must be match.
 
 **Data example** All fields must be sent.
 
@@ -229,7 +226,6 @@ Provide password and password confirmation of Account that want to be reset. bot
 ```json
 {
    "message": "passoword harus sama dengan konfirmasi password."
-}`
 }
 ```
 
