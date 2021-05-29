@@ -1,4 +1,5 @@
 import { Switch, Route } from "react-router-dom";
+import Footer from "./components/footer/Footer";
 
 import Header from "./components/header/Header";
 import NotifModal from "./components/modal/NotifModal";
@@ -19,6 +20,7 @@ function App() {
         </Route>
         <Route path="*">tere </Route>
       </Switch>
+      <Footer />
     </>
   );
 }
