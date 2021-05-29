@@ -1,23 +1,20 @@
-import { authActions } from "./authSlice";
+import { login as loginSlice } from "./authSlice";
 import { uiActions } from "./uiSlice";
 
 export const signup = (email, name, password) => {
   return async (dispatch) => {
     const signupToBackend = async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/signup`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email,
-            name,
-            password,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/signup`, {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          name,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await res.json();
       if (!res.ok) {
         throw new Error(data.message || "Tidak bisa mendaftar");
@@ -25,8 +22,8 @@ export const signup = (email, name, password) => {
       return data;
     };
     try {
-      const res = await signupToBackend()
-      dispatch(authActions.login(res))
+      const res = await signupToBackend();
+      dispatch(loginSlice(res));
     } catch (error) {
       dispatch(
         uiActions.showNotification({
@@ -42,19 +39,16 @@ export const signup = (email, name, password) => {
 export const login = (email, password) => {
   return async (dispatch) => {
     const loginToBackend = async () => {
-      const res = await fetch(
-        `${process.env.REACT_APP_SERVER_URL}/login`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/login`, {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const data = await res.json();
 
@@ -66,7 +60,7 @@ export const login = (email, password) => {
 
     try {
       const result = await loginToBackend();
-      dispatch(authActions.login(result));
+      dispatch(loginSlice (result));
     } catch (error) {
       dispatch(
         uiActions.showNotification({
@@ -79,8 +73,3 @@ export const login = (email, password) => {
   };
 };
 
-export const logout = () => {
-  return async (dispatch) => {
-    dispatch(authActions.logout)
-  }
-}

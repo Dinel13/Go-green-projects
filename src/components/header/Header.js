@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import logo from "../../assets/logo.jpg";
+import { logout } from "../../store/authSlice";
 
 export default function Header() {
   const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch()
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
       <div className="flex items-center flex-no-shrink text-white mr-6">
@@ -52,7 +54,7 @@ export default function Header() {
         {token ? (
           <div>
             <button
-              onClick={() => {}}
+              onClick={() => dispatch(logout())}
               className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white mt-4 lg:mt-0"
             >
               Log Out
