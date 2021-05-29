@@ -1,21 +1,17 @@
 import React from "react";
+import {Link} from 'react-router-dom'
+
+import logo from '../../assets/logo.jpg'
+
 
 export default function Header() {
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
       <div className="flex items-center flex-no-shrink text-white mr-6">
-        <svg
-          className="h-8 w-8 mr-2"
-          width="54"
-          height="54"
-          viewBox="0 0 54 54"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z" />
-        </svg>
-        <span className="font-semibold text-xl tracking-tight">
-          Tailwind CSS
-        </span>
+        <img className="rounded-full w-10 mr-2"  src={logo} alt="logo" />
+        <Link to="/" className="font-semibold text-xl tracking-tight">
+          Go Green
+        </Link>
       </div>
       <div className="block lg:hidden">
         <button className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
@@ -29,34 +25,38 @@ export default function Header() {
           </svg>
         </button>
       </div>
-      <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex">
         <div className="text-sm lg:flex-grow">
-          <a
+          <Link to="/docs"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
             Docs
-          </a>
+          </Link>
           <a
-            href="#responsive-header"
+            href="https://github.com/Dinel13/Go-green-projects"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
-            Examples
+            Source Code
           </a>
-          <a
+          <Link to="/suportus"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
           >
-            Blog
-          </a>
+            Support Us
+          </Link>
         </div>
         <div>
-          <a
-            href="#"
-            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-white mt-4 lg:mt-0"
+          <Link to="/login"
+            className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white mt-4 lg:mt-0"
           >
-            Download
-          </a>
+            Login
+          </Link>
+          <Link to="/signup"
+            className="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-green-700 hover:border-transparent hover:text-teal hover:bg-green-800 mt-4 lg:mt-0"
+          >
+            Sign up
+          </Link>
         </div>
       </div>
     </nav>
