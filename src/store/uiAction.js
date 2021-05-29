@@ -1,9 +1,9 @@
-import { uiActions } from "./uiSlice";
+import { showNotification } from "./uiSlice";
 
 export const showNotif = (status, title, message, action) => {
   return async (dispatch) => {
     dispatch(
-      uiActions.showNotification({
+      showNotification({
         status: status,
         title: title,
         message: message,
@@ -13,8 +13,3 @@ export const showNotif = (status, title, message, action) => {
   };
 };
 
-export const hideNotif = () => {
-    return async (dispatch) => {
-        dispatch(uiActions.hideNotification())
-    }
-}

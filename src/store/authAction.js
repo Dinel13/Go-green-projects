@@ -1,5 +1,5 @@
 import { login as loginSlice } from "./authSlice";
-import { uiActions } from "./uiSlice";
+import { showNotification } from "./uiSlice";
 
 export const signup = (email, name, password) => {
   return async (dispatch) => {
@@ -26,7 +26,7 @@ export const signup = (email, name, password) => {
       dispatch(loginSlice(res));
     } catch (error) {
       dispatch(
-        uiActions.showNotification({
+        showNotification({
           status: "error",
           title: "Gagal masuk",
           message: error.message,
@@ -63,7 +63,7 @@ export const login = (email, password) => {
       dispatch(loginSlice (result));
     } catch (error) {
       dispatch(
-        uiActions.showNotification({
+        showNotification({
           status: "error",
           title: "Gagal masuk",
           message: error.message,
