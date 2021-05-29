@@ -19,7 +19,7 @@ Provide name, email and password of Account to be created.
 {
     "name": "Bangkit",
     "email": "bangkit@test.com",
-    "name": "Bangkit21"
+    "password": "Bangkit21"
 }
 ```
 
@@ -75,7 +75,7 @@ Provide email and password of Account to be sign in.
 ```json
 {
     "email": "bangkit@test.com",
-    "name": "Bangkit21"
+    "password": "Bangkit21"
 }
 ```
 
