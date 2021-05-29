@@ -5,7 +5,7 @@ export const signup = (email, name, password) => {
   return async (dispatch) => {
     const signupToBackend = async () => {
       const res = await fetch(
-        "https://our-philosophy-314515.et.r.appspot.com/api/user/signup",
+        `${process.env.REACT_APP_SERVER_URL}/signup`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -18,7 +18,7 @@ export const signup = (email, name, password) => {
           },
         }
       );
-      const data = res.json();
+      const data = await res.json();
       if (!res.ok) {
         throw new Error(data.message || "Tidak bisa mendaftar");
       }
@@ -28,7 +28,6 @@ export const signup = (email, name, password) => {
       const res = await signupToBackend()
       dispatch(authActions.login(res))
     } catch (error) {
-      console.log(error);
       dispatch(
         uiActions.showNotification({
           status: "error",
@@ -44,7 +43,7 @@ export const login = (email, password) => {
   return async (dispatch) => {
     const loginToBackend = async () => {
       const res = await fetch(
-        "https://our-philosophy-314515.et.r.appspot.com/api/user/login",
+        `${process.env.REACT_APP_SERVER_URL}/login`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -69,7 +68,6 @@ export const login = (email, password) => {
       const result = await loginToBackend();
       dispatch(authActions.login(result));
     } catch (error) {
-      console.log(error);
       dispatch(
         uiActions.showNotification({
           status: "error",

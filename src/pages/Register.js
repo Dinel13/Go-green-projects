@@ -1,22 +1,23 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { login } from "../store/authAction";
+import { signup } from "../store/authAction";
 
 export default function Login() {
   const dispatch = useDispatch();
   const email = useRef();
   const password = useRef();
+  const name = useRef();
 
   const loginHandler = (event) => {
     event.preventDefault();
-    dispatch(login(email.current.value, password.current.value));
+    dispatch(signup(email.current.value, name.current.value, password.current.value));
   };
 
   return (
     <div className="w-full max-w-md my-8 p-10 m-auto bg-white border-gray-300 border rounded-md shadow-md dark:bg-gray-800">
       <h1 className="text-3xl font-semibold text-center text-gray-700 dark:text-white">
-        Login to Go Green
+        Sign In to Go Green
       </h1>
       <form className="mt-6" onSubmit={loginHandler}>
         <div>
@@ -35,19 +36,27 @@ export default function Login() {
         <div className="mt-4">
           <div className="flex items-center justify-between">
             <label
+              htmlFor="name"
+              className="block text-sm text-gray-800 dark:text-gray-200"
+            >
+              Nama
+            </label>
+          </div>
+          <input
+            ref={name}
+            type="text"
+            className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+          />
+        </div>
+        <div className="mt-4">
+          <div className="flex items-center justify-between">
+            <label
               htmlFor="password"
               className="block text-sm text-gray-800 dark:text-gray-200"
             >
               Password
             </label>
-            <Link
-              to="/lupa-password"
-              className="text-xs text-gray-600 dark:text-gray-400 hover:underline"
-            >
-              Lupa Password?
-            </Link>
           </div>
-
           <input
             ref={password}
             type="password"
@@ -57,7 +66,7 @@ export default function Login() {
 
         <div className="mt-6">
           <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:bg-green-800">
-            Masuk
+            Daftar
           </button>
         </div>
       </form>
@@ -98,12 +107,12 @@ export default function Login() {
   </div> */}
 
       <p className="mt-8 text-sm font-light text-center text-gray-700">
-        Belum Punya Akun?{" "}
+        Sudah Punya Akun?{" "}
         <Link
-          to="/signup"
+          to="/login"
           className="font-medium text-gray-800 dark:text-gray-200 hover:underline"
         >
-          DAFTAR
+          MASUK
         </Link>
       </p>
     </div>
