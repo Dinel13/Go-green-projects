@@ -41,7 +41,7 @@ export default function Login() {
               Password
             </label>
             <Link
-              to="/lupa-password"
+              to="/forgot-password"
               className="text-xs text-gray-600 dark:text-gray-400 hover:underline"
             >
               Lupa Password?

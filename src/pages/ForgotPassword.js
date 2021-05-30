@@ -6,23 +6,30 @@ export default function ForgotPassword() {
 
   const forgotHandler = async (event) => {
     event.preventDefault();
+    console.log(email.current.value);
+
     setInput((prevState) => ({ ...prevState, pending: true }));
+
     try {
-      const respon = await fetch("http::/localhost:8080", {
+      const respon = await fetch(`${process.env.REACT_APP_SERVER_URL}/reset`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: email.current.value }),
       });
+
       const data = await respon.json();
+      
       if (!respon.ok) {
         throw new Error(data.message || "Tidak bisa mereset");
       }
+      
       setInput((prevState) => ({ ...prevState, pending: true, succes: data }));
       setTimeout(
         () => setInput((prevState) => ({ ...prevState, succes: "" })),
         4000
       );
     } catch (error) {
+      console.log(error);
       setInput((prevState) => ({ ...prevState, pending: false, error: error }));
       setTimeout(
         () => setInput((prevState) => ({ ...prevState, error: "" })),
@@ -57,7 +64,7 @@ export default function ForgotPassword() {
               {input.error.message || input.error.TypeError}
             </p>
           )}
-          {input.error && (
+          {input.succes && (
             <p className="text-gray-800 italic p-2 mt-2 rounded-md border-green-600 bg-green-300">
               {input.succes.message || "link reset telah dikirm ke email anda"}
             </p>
