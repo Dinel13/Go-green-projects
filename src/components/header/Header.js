@@ -31,11 +31,11 @@ export default function Header() {
       <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex">
         <div className="text-sm lg:flex-grow">
           <Link
-            to="/docs"
+            to="/feedback"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
-            Docs
+            feedback
           </Link>
           <a
             href="https://github.com/Dinel13/Go-green-projects"

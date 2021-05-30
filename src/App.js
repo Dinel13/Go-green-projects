@@ -3,6 +3,7 @@ import Footer from "./components/footer/Footer";
 
 import Header from "./components/header/Header";
 import NotifModal from "./components/modal/NotifModal";
+import Feedback from "./pages/Fedback";
 import Login from "./pages/Login";
 import Signup from "./pages/Register";
 
@@ -12,8 +13,14 @@ function App() {
       <Header />
       <NotifModal />
       <Switch>
+        <Route path="/" exact>
+
+        </Route>
         <Route path="/login" exact>
           <Login />
+        </Route>
+        <Route path="/feedback" exact>
+          <Feedback />
         </Route>
         <Route path="/signup" exact>
           <Signup />

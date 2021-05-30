@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { signup } from "../store/authAction";
 
-export default function Login() {
+export default function Register() {
   const dispatch = useDispatch();
   const email = useRef();
   const password = useRef();
