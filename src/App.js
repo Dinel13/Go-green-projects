@@ -6,8 +6,11 @@ import Hero from "./components/hero/Hero";
 import NotifModal from "./components/modal/NotifModal";
 import OurTeam from "./components/ourTeam/OurTeam";
 import Feedback from "./pages/Fedback";
+import ForgotPassword from "./pages/ForgotPassword";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import Signup from "./pages/Register";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   return (
@@ -28,7 +31,13 @@ function App() {
         <Route path="/signup" exact>
           <Signup />
         </Route>
-        <Route path="*">tere </Route>
+        <Route path="/reset-password/:token" exact>
+          <ResetPassword />
+        </Route>
+        <Route path="/forgot-password" exact>
+          <ForgotPassword />
+        </Route>
+        <Route path="*"> <NotFound /> </Route>
       </Switch>
       <Footer />
     </>

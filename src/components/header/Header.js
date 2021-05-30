@@ -8,15 +8,30 @@ import { logout } from "../../store/authSlice";
 export default function Header() {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch()
+
+  const clickMenu = () => {
+    const navItem = document.getElementById("nav-item")
+    if (navItem.classList.contains("flex") ) {
+      navItem.classList.remove("flex")
+      navItem.classList.add("lg:flex")
+      navItem.classList.add("hidden")
+
+    } else {
+      navItem.classList.add("flex")
+      navItem.classList.remove("lg:flex")
+      navItem.classList.remove("hidden")
+
+    }
+  }
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500 sticky top-0 left-0" >
+    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
       <div className="flex items-center flex-no-shrink text-white mr-6">
         <img className="rounded-full w-10 mr-2" src={logo} alt="logo" />
         <Link to="/" className="font-semibold text-xl tracking-tight">
           Go Green
         </Link>
       </div>
-      <div className="block lg:hidden">
+      <div className="block lg:hidden" onClick={clickMenu}>
         <button className="flex items-center px-3 py-2 border rounded text-teal-lighter border-teal-light hover:text-white hover:border-white">
           <svg
             className="h-3 w-3"
@@ -28,8 +43,8 @@ export default function Header() {
           </svg>
         </button>
       </div>
-      <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex">
-        <div className="text-sm text-gray-100 lg:flex-grow">
+      <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex" id="nav-item">
+        <div className="text-sm flex-grow">
           <Link
             to="/feedback"
             href="#responsive-header"
@@ -45,13 +60,6 @@ export default function Header() {
           >
             Source Code
           </a>
-          {/* <Link
-            to="/suportus"
-            href="#responsive-header"
-            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
-          >
-            Support Us
-          </Link> */}
         </div>
         {token ? (
           <div>
