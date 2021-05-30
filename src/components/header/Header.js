@@ -9,7 +9,7 @@ export default function Header() {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch()
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
+    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500 sticky top-0 left-0" >
       <div className="flex items-center flex-no-shrink text-white mr-6">
         <img className="rounded-full w-10 mr-2" src={logo} alt="logo" />
         <Link to="/" className="font-semibold text-xl tracking-tight">
@@ -29,7 +29,7 @@ export default function Header() {
         </button>
       </div>
       <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex">
-        <div className="text-sm lg:flex-grow">
+        <div className="text-sm text-gray-100 lg:flex-grow">
           <Link
             to="/feedback"
             href="#responsive-header"
@@ -39,17 +39,19 @@ export default function Header() {
           </Link>
           <a
             href="https://github.com/Dinel13/Go-green-projects"
+            target="_blank"
+            rel="noreferrer"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
             Source Code
           </a>
-          <Link
+          {/* <Link
             to="/suportus"
             href="#responsive-header"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white"
           >
             Support Us
-          </Link>
+          </Link> */}
         </div>
         {token ? (
           <div>

@@ -1,0 +1,11 @@
+.heroBackground {
+    min-height: 85vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(74, 136, 112, 0.747),
+      rgba(53, 11, 11, 0.479)
+    ),
+    url(../../assets/bg.jpg);
+  background-size: cover;
+  background-position: right;
+}

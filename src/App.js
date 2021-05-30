@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Footer from "./components/footer/Footer";
 
 import Header from "./components/header/Header";
+import Hero from "./components/hero/Hero";
 import NotifModal from "./components/modal/NotifModal";
 import Feedback from "./pages/Fedback";
 import Login from "./pages/Login";
@@ -14,7 +15,7 @@ function App() {
       <NotifModal />
       <Switch>
         <Route path="/" exact>
-
+          <Hero />
         </Route>
         <Route path="/login" exact>
           <Login />
