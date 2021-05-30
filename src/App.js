@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import Hero from "./components/hero/Hero";
 import NotifModal from "./components/modal/NotifModal";
+import OurTeam from "./components/ourTeam/OurTeam";
 import Feedback from "./pages/Fedback";
 import Login from "./pages/Login";
 import Signup from "./pages/Register";
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Hero />
+          <OurTeam />
         </Route>
         <Route path="/login" exact>
           <Login />
