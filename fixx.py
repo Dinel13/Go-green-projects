@@ -1,9 +1,10 @@
+import os
 from flask import Flask, jsonify, request
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.models import load_model
 import numpy as np
 
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 
 labels = {0: "cardboard", 1: "glass", 2: "metal", 3: "paper", 4: "plastic", 5: "trash"}
 
@@ -27,7 +28,7 @@ def processImg(IMG_PATH):
 
 # Initializing flask application
 app = Flask(__name__)
-cors = CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 
 @app.route("/")
@@ -49,4 +50,4 @@ def processReq():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
