@@ -1,18 +1,23 @@
+# Use Python37
+FROM python:3.7
 
-# Use the official lightweight Python image.
-# https://hub.docker.com/_/python
-FROM python:3.9-slim
+# Copy requirements.txt to the docker image and install packages
+COPY requirements.txt /
+RUN pip install -r requirements.txt
 
-# Allow statements and log messages to immediately appear in the Knative logs
-ENV PYTHONUNBUFFERED True
+# Set the WORKDIR to be the folder
+COPY . /app
 
-# Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
+# Expose port 5000
+EXPOSE 5000
+ENV PORT 5000
+WORKDIR /app
+
+# fersi lama
+# CMD exec gunicorn --bind :$PORT main_v1:app --workers 1 --threads 1 --timeout 60
 
 # Install production dependencies.
-RUN pip install Flask gunicorn flask_restful
+RUN pip install gunicorn
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
