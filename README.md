@@ -5,7 +5,7 @@ Capstone Project Bangkit 2021
   * Dicky
   * Alawi
 * Machine Learning Path
-  * Okky
+  * [Okky](https://github.com/lemkova/ "Okky's Github profile")
   * Shifa
 * Cloud Computing Path
   * [Huddin](https://github.com/Dinel13/ "salahuddin's github profile")
