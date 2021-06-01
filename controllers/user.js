@@ -81,16 +81,26 @@ const signup = async (req, res, next) => {
 const login = async (req, res, next) => {
   const { email, password } = req.body;
 
+  if (!email || !password) {
+    return next(new HttpError("Gagal masuk, Semua field harus terisi", 401));
+  }
+
   let existingUser;
   try {
     existingUser = await User.findByEmail(email);
   } catch (err) {
-    const error = new HttpError("Gagal masuk, coba lagi nanti.", 500);
+    const error = new HttpError(
+      "Gagal mendapatkan data user, coba lagi nanti.",
+      500
+    );
     return next(error);
   }
 
   if (!existingUser) {
-    const error = new HttpError("Credentials tidak cocok.", 401);
+    const error = new HttpError(
+      "Email tidak ditemukan, silahkan mendaftar dulu.",
+      401
+    );
     return next(error);
   }
 
@@ -98,13 +108,16 @@ const login = async (req, res, next) => {
   try {
     isValidPassword = await bcrypt.compare(password, existingUser.password);
   } catch (err) {
-    const error = new HttpError("Tidak bisa masuk, coba lagi nanti.", 500);
+    const error = new HttpError(
+      "Tidak bisa memeriksa password, coba lagi nanti.",
+      500
+    );
     return next(error);
   }
 
   if (!isValidPassword) {
     const error = new HttpError(
-      "Tidak bisa masuk, Pastikan password kamu betul.",
+      "Password tidak sesuai, pastikan password kamu betul.",
       401
     );
     return next(error);
@@ -112,13 +125,16 @@ const login = async (req, res, next) => {
 
   let token;
   try {
-    token = jwt.sign(
+    token = await jwt.sign(
       { userId: existingUser.id, email: existingUser.email },
       process.env.JWT_KEY,
-      { expiresIn: "100d" }
+      { expiresIn: "10d" }
     );
   } catch (err) {
-    const error = new HttpError("Tidak bisa masuk, coba lagi nanti.", 500);
+    const error = new HttpError(
+      "Tidak bisa membuat token, coba lagi nanti.",
+      500
+    );
     return next(error);
   }
 
