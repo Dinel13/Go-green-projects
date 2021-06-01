@@ -10,6 +10,12 @@ const HttpError = require("../models/http-error");
 const signup = async (req, res, next) => {
   const { name, email, password } = req.body;
 
+  if (!name || !email || !password) {
+    return next(
+      new HttpError("Gagal mendaftar, Semua field harus terisi", 401)
+    );
+  }
+
   let existingUser;
   try {
     existingUser = await User.findByEmail(email);
@@ -25,7 +31,10 @@ const signup = async (req, res, next) => {
   try {
     HasPassword = await bcrypt.hash(password, 12);
   } catch (err) {
-    const error = new HttpError("Gagal mendaftar, coba lagi natiy", 500);
+    const error = new HttpError(
+      "Gagal engkripsi password, coba lagi nanti",
+      500
+    );
     return next(error);
   }
 
@@ -35,25 +44,31 @@ const signup = async (req, res, next) => {
   try {
     result = await createuser.save();
   } catch (err) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nantiu", 500));
+    return next(new HttpError("Gagal menyimpan data, coba lagi nanti", 500));
   }
 
   let saveUser;
   try {
     saveUser = await User.findByEmail(email);
   } catch (err) {
-    return next(new HttpError("Gagal mendaftar, coba lagi nantii", 500));
+    return next(
+      new HttpError(
+        "Gagal mendapatkan data yang disimpan, coba lagi nanti",
+        500
+      )
+    );
   }
+
   let token;
   try {
-    token = jwt.sign(
+    token = await jwt.sign(
       { userId: saveUser.id, email: saveUser.email },
       process.env.JWT_KEY,
-      { expiresIn: "100d" }
+      { expiresIn: "10d" }
     );
   } catch (error) {
     console.log(error);
-    return next(new HttpError("Gagal mendaftar, coba lagi nantio", 500));
+    return next(new HttpError("Gagal membuat token, coba lagi nanti", 500));
   }
 
   res.status(201).json({
@@ -81,10 +96,7 @@ const login = async (req, res, next) => {
 
   let isValidPassword = false;
   try {
-    isValidPassword = await bcrypt.compare(
-      password,
-      existingUser.password
-    );
+    isValidPassword = await bcrypt.compare(password, existingUser.password);
   } catch (err) {
     const error = new HttpError("Tidak bisa masuk, coba lagi nanti.", 500);
     return next(error);
@@ -138,13 +150,9 @@ const forgotPassword = async (req, res, next) => {
 
   let token;
   try {
-    token = jwt.sign(
-      { email: user.email },
-      process.env.JWT_RESET_PASSWORD,
-      {
-        expiresIn: "20m",
-      }
-    );
+    token = jwt.sign({ email: user.email }, process.env.JWT_RESET_PASSWORD, {
+      expiresIn: "20m",
+    });
   } catch (err) {
     const error = new HttpError("Tidak bisa mereset, coba lagi nanti.", 500);
     return next(error);
@@ -178,7 +186,7 @@ const forgotPassword = async (req, res, next) => {
     } else {
       return res.status(201).json({
         message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
-       // token: token,
+        // token: token,
       });
     }
   });

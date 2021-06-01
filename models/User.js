@@ -15,7 +15,6 @@ module.exports = class User {
           "INSERT INTO users (name, email, password) VALUES (?, ?, ?)",
           [this.name, this.email, this.password]
         );
-        console.log("savve", user);
         return user;
       })
       .catch((err) => {
@@ -30,7 +29,6 @@ module.exports = class User {
         const user = await pool.query("SELECT * FROM users WHERE email = ?", [
           email,
         ]);
-        console.log("emai", user[0]);
         return user[0];
       })
       .catch((err) => {
@@ -47,7 +45,6 @@ module.exports = class User {
           "UPDATE users SET password = ? WHERE email = ?",
           [password, email]
         );
-        console.log("emai", user[0]);
         return user[0];
       })
       .catch((err) => {
