@@ -181,49 +181,70 @@ const forgotPassword = async (req, res, next) => {
     return next(error);
   }
   // for testing
-  console.log(`
-    <h2>Hi, ${user.name} </h2>
+  // console.log(`
+  //   <h2>Hi, ${user.name} </h2>
+  //   <h4>Kamu telah meminta untuk mereset password</h4>
+  //   <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
+  // `);
+  // return res.status(200).json({ pk: token });
+
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    auth: {
+      type: "OAuth2",
+      user: process.env.MAIL_USERNAME,
+      pass: process.env.MAIL_PASSWORD,
+      clientId: process.env.OAUTH_CLIENTID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+    },
+  });
+
+  const mailOptions = {
+    from: "fadullah2021@gmail.com",
+    to: email,
+    subject: "Go project || Password reset",
+    html: `
+    <h2>Hi, ${user.name}</h2>
     <h4>Kamu telah meminta untuk mereset password</h4>
-    <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
-  `);
-  return res.status(200).json({ pk: token });
-
-  // const transporter = nodemailer.createTransport({
-  //   service: "gmail",
-  //   host: "smtp.gmail.com",
-  //   auth: {
-  //     type: "OAuth2",
-  //     user: process.env.MAIL_USERNAME,
-  //     pass: process.env.MAIL_PASSWORD,
-  //     clientId: process.env.OAUTH_CLIENTID,
-  //     clientSecret: process.env.OAUTH_CLIENT_SECRET,
-  //     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-  //   },
-  // });
-
-  // const mailOptions = {
-  //   from: "fadullah2021@gmail.com",
-  //   to: email,
-  //   subject: "Go project || Password reset",
-  //   html: `
-  //     <h2>Hi, ${user.name} </h2>
-  //     <h4>Kamu telah meminta untuk mereset password</h4>
-  //     <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
-  //   `,
-  // };
-  // transporter.sendMail(mailOptions, function (error, info) {
-  //   if (error) {
-  //     console.log(error);
-  //     return next(
-  //       new HttpError("Tidak bisa mengirim email, coba lagi nanti.", 500)
-  //     );
-  //   } else {
-  //     return res.status(201).json({
-  //       message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
-  //       token: token,
-  //     });
-  //   }
-  // });
+    <p>Klik tombol dibawah untuk membuat password baru.</p>
+    <a
+      href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}"
+      style="
+        padding: 8px 10px;
+        text-decoration: none;
+        color: black;
+        font-weight: 700;
+        background-color: #278a27;
+        border-radius: 8px;
+      "
+    >
+      reset password
+    </a>
+    <p>jika link diatas tidak berfunsi, maka gunakan link dibawah ini</p>
+    
+    <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}"
+      >https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}</a
+    >
+    <br />
+    <h4>Terima kasih</h4>
+    <p>Team Manut || B21-CAP1099</p>p>
+    `,
+  };
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+      return next(
+        new HttpError("Tidak bisa mengirim email, coba lagi nanti.", 500)
+      );
+    } else {
+      return res.status(201).json({
+        message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
+        // token: token,
+      });
+    }
+  });
 };
 
 const setNewPassword = async (req, res, next) => {
