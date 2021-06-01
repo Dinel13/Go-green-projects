@@ -148,6 +148,10 @@ const login = async (req, res, next) => {
 const forgotPassword = async (req, res, next) => {
   const { email } = req.body;
 
+  if (!email) {
+    return next(new HttpError("Gagal masuk, Email harus terisi", 401));
+  }
+
   let user;
   try {
     user = await User.findByEmail(email);
@@ -167,45 +171,59 @@ const forgotPassword = async (req, res, next) => {
   let token;
   try {
     token = jwt.sign({ email: user.email }, process.env.JWT_RESET_PASSWORD, {
-      expiresIn: "20m",
+      expiresIn: "10m",
     });
   } catch (err) {
-    const error = new HttpError("Tidak bisa mereset, coba lagi nanti.", 500);
+    const error = new HttpError(
+      "Tidak bisa membuat token, coba lagi nanti.",
+      500
+    );
     return next(error);
   }
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    auth: {
-      type: "OAuth2",
-      user: process.env.MAIL_USERNAME,
-      pass: process.env.MAIL_PASSWORD,
-      clientId: process.env.OAUTH_CLIENTID,
-      clientSecret: process.env.OAUTH_CLIENT_SECRET,
-      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
-    },
-  });
+  console.log(`
+  <h2>Hi, ${user.name} </h2>
+  <h4>Kamu telah meminta untuk mereset password</h4>
+  <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
+`);
+  return res.status(200).json({ pk: token });
 
-  const mailOptions = {
-    from: "fadullah2021@gmail.com",
-    to: email,
-    subject: "Password reset",
-    html: `
-      <p>Kamu telah meminta untuk mereset password</p>
-      <p>KLik tautan ini <a href="http://localhost:3000/reset/${token}">link</a> untuk membuat password baru.</p>
-    `,
-  };
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      return next();
-    } else {
-      return res.status(201).json({
-        message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
-        // token: token,
-      });
-    }
-  });
+  // const transporter = nodemailer.createTransport({
+  //   service: "gmail",
+  //   host: "smtp.gmail.com",
+  //   auth: {
+  //     type: "OAuth2",
+  //     user: process.env.MAIL_USERNAME,
+  //     pass: process.env.MAIL_PASSWORD,
+  //     clientId: process.env.OAUTH_CLIENTID,
+  //     clientSecret: process.env.OAUTH_CLIENT_SECRET,
+  //     refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+  //   },
+  // });
+
+  // const mailOptions = {
+  //   from: "fadullah2021@gmail.com",
+  //   to: email,
+  //   subject: "Go project || Password reset",
+  //   html: `
+  //     <h2>Hi, ${user.name} </h2>
+  //     <h4>Kamu telah meminta untuk mereset password</h4>
+  //     <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
+  //   `,
+  // };
+  // transporter.sendMail(mailOptions, function (error, info) {
+  //   if (error) {
+  //     console.log(error);
+  //     return next(
+  //       new HttpError("Tidak bisa mengirim email, coba lagi nanti.", 500)
+  //     );
+  //   } else {
+  //     return res.status(201).json({
+  //       message: `Email untuk mereset telah dikirim ke alamat ${email}. Link akan kadarluarsa dalam 10 menit.`,
+  //       token: token,
+  //     });
+  //   }
+  // });
 };
 
 const setNewPassword = async (req, res, next) => {
