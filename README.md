@@ -1,6 +1,6 @@
-# Store feedback
+# API for ML
 
-TEST THE API
+## TEST THE API
 
 **URL** : `https://ml-api-rupnuawd4a-et.a.run.app/`
 
@@ -8,7 +8,7 @@ TEST THE API
 
 **Auth required** : NO
 
-## Success Response
+### Success Response
 
 **Condition** : If everything is OK.
 
@@ -16,13 +16,12 @@ TEST THE API
 
 **Content example**
 
-```Application is working
+```
+Application is working
 
 ```
 
-# Store feedback
-
-PREDICT THE IMAGE
+## PREDICT THE IMAGE
 
 **URL** : `https://ml-api-rupnuawd4a-et.a.run.app/process/process`
 
@@ -43,7 +42,7 @@ formdata.append("img" , <image file>)
 body : formdata
 ```
 
-## Success Response
+### Success Response
 
 **Condition** : If everything is OK.
 
@@ -57,7 +56,7 @@ body : formdata
 }
 ```
 
-## Referensi
+### Referensi
 
 - [faizan170/tensorflow-image-classification-flask-deployment](https://github.com/faizan170/tensorflow-image-classification-flask-deployment "faizan170's Github profile")
 - [how-to-deploy-a-simple-flask-app-on-cloud-run-with-cloud-endpoint](https://medium.com/fullstackai/how-to-deploy-a-simple-flask-app-on-cloud-run-with-cloud-endpoint-e10088170eb7 "simple-flask-app-on-cloud-run")
