@@ -1,5 +1,7 @@
 # API for ML
 
+**Deploy use** : Cloud Run Google CLoud Flatform
+
 ## TEST THE API
 
 **URL** : `https://ml-api-rupnuawd4a-et.a.run.app/`
@@ -23,7 +25,7 @@ Application is working
 
 ## PREDICT THE IMAGE
 
-**URL** : `https://ml-api-rupnuawd4a-et.a.run.app/process/process`
+**URL** : `https://ml-api-rupnuawd4a-et.a.run.app/process`
 
 **Method** : `POST`
 
@@ -33,7 +35,8 @@ Application is working
 
 Provide image to be predict with key "img".
 
-**Data example** All fields must be sent.
+**Data example**
+All fields must be sent.
 
 ```
 const formdata = new Formdata()
