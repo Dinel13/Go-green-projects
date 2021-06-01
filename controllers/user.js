@@ -180,12 +180,12 @@ const forgotPassword = async (req, res, next) => {
     );
     return next(error);
   }
-
+  // for testing
   console.log(`
-  <h2>Hi, ${user.name} </h2>
-  <h4>Kamu telah meminta untuk mereset password</h4>
-  <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
-`);
+    <h2>Hi, ${user.name} </h2>
+    <h4>Kamu telah meminta untuk mereset password</h4>
+    <p>Klik tautan ini <a href="https://frontend-rupnuawd4a-et.a.run.app/reset-password/${token}">link reset password</a> untuk membuat password baru.</p>
+  `);
   return res.status(200).json({ pk: token });
 
   // const transporter = nodemailer.createTransport({
@@ -230,9 +230,21 @@ const setNewPassword = async (req, res, next) => {
   const token = req.params.token;
   const { newPassword, newPasswordConf } = req.body;
 
+  if (!token) {
+    return next(
+      new HttpError("Token tidak tersedia, pastikan link anda betul", 401)
+    );
+  }
+
+  if (!newPassword || !newPasswordConf) {
+    return next(
+      new HttpError("Gagal mereset password, pastikan semua field terisi", 401)
+    );
+  }
+
   if (newPassword !== newPasswordConf) {
     return next(
-      new HttpError("passoword harus sama dengan konfirmasi password", 401)
+      new HttpError("Passoword harus sama dengan konfirmasi password", 401)
     );
   }
 
@@ -243,12 +255,18 @@ const setNewPassword = async (req, res, next) => {
       process.env.JWT_RESET_PASSWORD
     );
   } catch (error) {
-    const err = new HttpError("Tidak bisa mereset, coba lagi nantit.", 500);
+    const err = new HttpError(
+      "Tidak bisa memverifikasi token, token hanya berumur 10 menit setelah digenerate.",
+      500
+    );
     return next(err);
   }
 
   if (!decodedToken) {
-    const err = new HttpError("Token sudah expire, coba lagi nanti.", 500);
+    const err = new HttpError(
+      "Token sudah expire, token hanya berumur 10 menit setelah digenerate.",
+      404
+    );
     return next(err);
   }
 
@@ -256,7 +274,10 @@ const setNewPassword = async (req, res, next) => {
   try {
     HasPassword = await bcrypt.hash(newPassword, 12);
   } catch (err) {
-    const error = new HttpError("Gagal mereset, coba lagi nati", 500);
+    const error = new HttpError(
+      "Gagal mengengrisi password baru, coba lagi nati",
+      500
+    );
     return next(error);
   }
 
@@ -264,7 +285,10 @@ const setNewPassword = async (req, res, next) => {
   try {
     user = await User.updatePassword(HasPassword, decodedToken.email);
   } catch (error) {
-    const err = new HttpError("Tidak bisa mereset, coba lagi nanti.", 500);
+    const err = new HttpError(
+      "Tidak bisa mengupdate password baru, coba lagi nanti.",
+      500
+    );
     return next(err);
   }
   res.status(201).json({
