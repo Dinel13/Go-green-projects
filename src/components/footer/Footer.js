@@ -11,7 +11,7 @@ export default function Footer() {
     setPending(true);
     const subscibeToBackend = async () => {
       const respon = await fetch(
-        "http://asia-southeast2-our-philosophy-314515.cloudfunctions.net/newsletter",
+        "https://asia-southeast2-our-philosophy-314515.cloudfunctions.net/newsletter",
         {
           method: "POST",
           headers: {

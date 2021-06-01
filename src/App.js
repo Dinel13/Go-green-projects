@@ -9,6 +9,7 @@ import Feedback from "./pages/Fedback";
 import ForgotPassword from "./pages/ForgotPassword";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
+import Recycle from "./pages/Recycle";
 import Signup from "./pages/Register";
 import ResetPassword from "./pages/ResetPassword";
 
@@ -31,13 +32,19 @@ function App() {
         <Route path="/signup" exact>
           <Signup />
         </Route>
+        <Route path="/recycle" exact>
+          <Recycle />
+        </Route>
         <Route path="/reset-password/:token" exact>
           <ResetPassword />
         </Route>
         <Route path="/forgot-password" exact>
           <ForgotPassword />
         </Route>
-        <Route path="*"> <NotFound /> </Route>
+        <Route path="*">
+          {" "}
+          <NotFound />{" "}
+        </Route>
       </Switch>
       <Footer />
     </>

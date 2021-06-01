@@ -13,7 +13,7 @@ export default function Feedback() {
     setPending(true);
     try {
       const respon = await fetch(
-        "http://asia-southeast2-our-philosophy-314515.cloudfunctions.net/feedback",
+        "https://asia-southeast2-our-philosophy-314515.cloudfunctions.net/feedback",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },

@@ -18,7 +18,7 @@ export default function Hero() {
           </p>
           <div className="flex justify-center">
             <Link
-              to="tulis"
+              to="/recycle"
               className="inline-flex text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-lg"
             >
               Start Recycle

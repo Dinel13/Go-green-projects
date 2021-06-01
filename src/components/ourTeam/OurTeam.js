@@ -1,14 +1,14 @@
 import React from "react";
-import udin from "../../assets/udin.jpg"
+import udin from "../../assets/udin.jpg";
 
 const teams = [
   {
-    name: "salahuddin",
+    name: "Salahuddin",
     job: "Full-Stack Developper",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: udin,
-    linkedin: "https://dummyimage.com/203x203",
+    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
   },
   {
     name: "Ainun Annisa",
@@ -16,7 +16,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Dicky",
@@ -24,7 +24,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Alawi",
@@ -32,7 +32,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Okky",
@@ -40,7 +40,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    linkedin: "https://www.linkedin.com/",
   },
   {
     name: "Shifa",
@@ -48,7 +48,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    linkedin: "https://www.linkedin.com/",
   },
 ];
 
