@@ -9,6 +9,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: udin,
     linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    university: "Universitas Hasanuddin, Makassar",
   },
   {
     name: "Ainun Annisa",
@@ -17,6 +18,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+    university: "Universitas Hasanuddin, Makassar",
   },
   {
     name: "Dicky",
@@ -25,6 +27,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+    university: "Universitas Mulawarman, Samarinda",
   },
   {
     name: "Alawi",
@@ -33,6 +36,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+    university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
   },
   {
     name: "Okky",
@@ -41,6 +45,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+    university: "Universitas Brawijaya, Malang",
   },
   {
     name: "Shifa",
@@ -49,6 +54,7 @@ const teams = [
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+    university: "Universitas Negeri Yogyakarta, Yogyakarta",
   },
 ];
 
@@ -64,7 +70,7 @@ export default function OurTeam() {
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Team Manut adalah nama yang kami pilih untuk dijadikan identitas.
             Dibentuk untuk satu tujuan bersama. Terpisah oleh lautan dan zona
-            waktu adalah bagian kebanggan tersendiri dari team kami.
+            waktu adalah kebanggaan tersendiri bagi kami.
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
@@ -72,15 +78,18 @@ export default function OurTeam() {
             <div className="p-4 lg:w-1/3 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg ">
                 <img
+                  loading="lazy"
                   alt={team.nama}
-                  className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
+                  className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-top mb-4"
                   src={team.image}
                 />
-                <div className="w-full">
+                <div className="w-full text-left px-5 ">
                   <h2 className="title-font font-medium text-lg text-gray-900">
                     {team.name}
                   </h2>
-                  <h3 className="text-gray-500 mb-3">{team.job}r</h3>
+                  <p className="text-gray-400 text-sm">{team.university}</p>
+                  <h3 className="text-gray-600 ">{team.job}</h3>
+                  <hr className="my-2" />
                   <p className="mb-4">{team.motto}</p>
                   <a
                     href={team.linkedin}

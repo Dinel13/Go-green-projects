@@ -55,7 +55,7 @@ export default function Recycle() {
           </h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Sebelum melakukan Recycle, kenali dulu jenis sampah kamu. Kami
-            menyediakan alat untuk mendeteksi 6 jenis sampah
+            menyediakan alat untuk mendeteksi 6 jenis sampah yaitu
             <span className="font-medium text-gray-800">
               {" "}
               cardboard, glass, metal, paper, plastic dan trash
@@ -160,7 +160,7 @@ export default function Recycle() {
             </div>
             <div className="alert-content ml-4">
               <div className="alert-title font-semibold text-lg text-green-800">
-                Berlangganan sukses
+                Prediksi sukses
               </div>
               <div className="alert-description text-green-600">
                 Hasil prediksinya adalah{" "}

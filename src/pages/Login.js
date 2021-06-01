@@ -1,16 +1,37 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { login } from "../store/authAction";
 
 export default function Login() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const email = useRef();
   const password = useRef();
+  const [pending, setPending] = useState(null);
+
+  const successLogin = () => {
+    setPending(false);
+    email.current.value = "";
+    password.current.value = "";
+    setTimeout(() => history.push("/"), 2000);
+  };
+
+  const failLogin = () => {
+    setPending(false);
+  };
 
   const loginHandler = (event) => {
     event.preventDefault();
-    dispatch(login(email.current.value, password.current.value));
+    setPending(true);
+    dispatch(
+      login(
+        email.current.value,
+        password.current.value,
+        successLogin,
+        failLogin
+      )
+    );
   };
 
   return (
@@ -56,9 +77,32 @@ export default function Login() {
         </div>
 
         <div className="mt-6">
-          <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:bg-green-800">
-            Masuk
-          </button>
+          {pending ? (
+            <button
+              type="button"
+              disabled
+              className="w-full md:w-4/6 mx-auto lg:w-3/6 flex justify-center items-center px-4 py-3 text-white bg-green-400 rounded-md"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="animate-spin h-5 w-5 mr-3 text-white"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={3}
+                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                />
+              </svg>
+            </button>
+          ) : (
+            <button className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded-md hover:bg-green-700 focus:outline-none focus:bg-green-800">
+              Masuk
+            </button>
+          )}
         </div>
       </form>
 

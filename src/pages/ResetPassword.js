@@ -40,6 +40,8 @@ export default function ResetPassword() {
         () => setInput((prevState) => ({ ...prevState, succes: "" })),
         4000
       );
+      password.current.value = "";
+      passwordConf.current.value = "";
     } catch (error) {
       setInput((prevState) => ({ ...prevState, pending: false, error: error }));
       setTimeout(

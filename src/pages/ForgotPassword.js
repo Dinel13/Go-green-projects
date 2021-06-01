@@ -18,16 +18,17 @@ export default function ForgotPassword() {
       });
 
       const data = await respon.json();
-      
+
       if (!respon.ok) {
         throw new Error(data.message || "Tidak bisa mereset");
       }
-      
+
       setInput((prevState) => ({ ...prevState, pending: true, succes: data }));
       setTimeout(
         () => setInput((prevState) => ({ ...prevState, succes: "" })),
         4000
       );
+      email.current.value = "";
     } catch (error) {
       console.log(error);
       setInput((prevState) => ({ ...prevState, pending: false, error: error }));

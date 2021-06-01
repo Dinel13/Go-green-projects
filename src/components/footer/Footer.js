@@ -38,6 +38,7 @@ export default function Footer() {
         setSucces(null);
       }, 3000);
       setPending(false);
+      inputEmailRef.current.value = "";
     } catch (error) {
       console.log(error);
       setError(error);
@@ -57,7 +58,7 @@ export default function Footer() {
             Join Our Newsletter
           </h2>
           <p className="text-gray-700 text-sm pl-px">
-            Dapatkan berita, article dan update terbaru seputar Go Green project
+            Dapatkan berita, artikel dan update terbaru seputar Go Green project
             dan daur ulang.
           </p>
           <form action="" onSubmit={submitLangganan} className="mt-2">
