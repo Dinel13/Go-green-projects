@@ -4,14 +4,19 @@ FROM python:3.9-slim
 # Allow statements and log messages to immediately appear in the Knative logs
 ENV PYTHONUNBUFFERED True
 
-# Copy local code to the container image.
-ENV APP_HOME /app
-WORKDIR $APP_HOME
-COPY . ./
-
 # Copy requirements.txt to the docker image and install packages
+COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
+
+COPY fix.h5 /
+# Set the WORKDIR to be the folder
+COPY . /app
+# Expose port 5000
+WORKDIR /app
+COPY . ./
+
+
 
 # Run the web service on container startup. Here we use the gunicorn
 # webserver, with one worker process and 8 threads.
