@@ -187,9 +187,7 @@ export default function Recycle() {
           </Link>
         )}
         <hr className="my-8" />
-        {rekomendasi && (
-          <Rekomendation category={status.success || "plastic"} />
-        )}
+        {rekomendasi && <Rekomendation category={status.success || "glass"} />}
       </div>
     </section>
   );
