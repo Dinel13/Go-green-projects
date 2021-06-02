@@ -215,7 +215,7 @@ const recomendation = (req, res) => {
       res.status(401).send({ message: "category tidak boleh kosong" });
     }
     if (!waste[category]) {
-      res.status(40).send({ message: "category tidak ditemukan" });
+      res.status(404).send({ message: "category tidak ditemukan" });
     }
     res.status(200).send(waste[category]);
   }
