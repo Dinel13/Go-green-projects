@@ -87,7 +87,6 @@ Provide CATEGORY to be search.
 
 ```json
 {
-  "result" : {
     "id": 3,
     "icon": "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
     "recomendation": [
@@ -105,7 +104,7 @@ Provide CATEGORY to be search.
       },
       ...
     ]
-  },
+
 }
 ```
 
@@ -123,7 +122,7 @@ Provide CATEGORY to be search.
 }
 ```
 
-**Condition** : If something wrong.
+**Condition** : If category not faound.
 
 **Code** : `404`
 
@@ -131,6 +130,10 @@ Provide CATEGORY to be search.
 
 ```json
 {
-  "message": "soe"
+  "message": "category tidak ditemukan"
 }
 ```
+
+**Condition** : If something wrong.
+
+**Code** : `404`
