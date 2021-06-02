@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Rekomendation from "../components/rekomendation/Rekomendation";
 
 export default function Recycle() {
   const [img, setImg] = useState(null);
+  const [rekomendasi, setRekomendasi] = useState(null);
   const [status, setStatus] = useState({
     success: "",
     error: "",
@@ -141,40 +143,52 @@ export default function Recycle() {
             </div>
           </div>
         )}
-        {status.success && (
-          <div className="alert flex flex-row my-2 items-center bg-green-200  px-5 py-3 rounded border-b-2 border-green-300">
-            <div className="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
-              <span className="text-green-500">
-                <svg
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  className="h-6 w-6"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </span>
-            </div>
-            <div className="alert-content ml-4">
-              <div className="alert-title font-semibold text-lg text-green-800">
-                Prediksi sukses
-              </div>
-              <div className="alert-description text-green-600">
-                Hasil prediksinya adalah{" "}
-                <span className="text-2xl text-gray-700 font-bold">
-                  {status.success}
+        {!status.success && (
+          <div className="alert flex flex-row my-2 items-center bg-green-200  px-5 py-3 rounded border-b-2 border-green-300 justify-between">
+            <div className="flex items-center">
+              <div className="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+                <span className="text-green-500">
+                  <svg
+                    fill="currentColor"
+                    viewBox="0 0 20 20"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    ></path>
+                  </svg>
                 </span>
               </div>
+              <div className="alert-content ml-4">
+                <div className="alert-title font-semibold text-lg text-green-800">
+                  Klasifikasi sukses
+                </div>
+                <div className="alert-description text-green-600">
+                  Hasilnya adalah{" "}
+                  <span className="text-2xl text-gray-700 font-bold">
+                    {status.success || "ggg"}
+                  </span>
+                </div>
+              </div>
             </div>
+            <button
+              onClick={() => setRekomendasi(status.success || "plastic")}
+              className="py-3 px-3 bg-green-700 rounded-md hover:bg-green-800 text-gray-50"
+            >
+              Lihat rekomendasi
+            </button>
           </div>
         )}
         {status.feedback && !status.pending && (
           <Link to="/feedback" className="text-blue-500">
             kirim feedback
           </Link>
+        )}
+        <hr className="my-8" />
+        {rekomendasi && (
+          <Rekomendation category={status.success || "plastic"} />
         )}
       </div>
     </section>
