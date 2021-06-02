@@ -1,6 +1,7 @@
 # Recomendation API
 
-get all data recomendation for all category
+## get all categories
+gat all data recomendations for all categories
 
 **URL** : `https://asia-southeast2-our-philosophy-314515.cloudfunctions.net/recomendation`
 
@@ -9,8 +10,6 @@ get all data recomendation for all category
 **Auth required** : NO
 
 **No Data must provided**
-
-&nbsp;
 
 ## Success Response
 
@@ -55,9 +54,9 @@ get all data recomendation for all category
 &nbsp;
 &nbsp;
 
-#GET one category
+# GET one category
 
-get all data recomendation for ONE category
+get all data recomendations for ONE category
 
 **URL** : `https://asia-southeast2-our-philosophy-314515.cloudfunctions.net/recomendation`
 
