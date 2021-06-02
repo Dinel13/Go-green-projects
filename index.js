@@ -6,11 +6,12 @@
  */
 // const CORS = require('cors')
 
-exports.recomendation = (req, res) => {
-  const waste = [
-    {
+const cors = require("cors");
+
+const recomendation = (req, res) => {
+  const waste = {
+    plastic: {
       id: 1,
-      category: "plastic",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/no-plastic-bottles.png",
       recomendation: [
         {
@@ -45,9 +46,8 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-    {
+    trash: {
       id: 2,
-      category: "trash",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/garbage.png",
       recomendation: [
         {
@@ -58,9 +58,8 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-    {
+    paper: {
       id: 3,
-      category: "paper",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
       recomendation: [
         {
@@ -95,9 +94,8 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-    {
+    metal: {
       id: 4,
-      category: "metal",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/canned-food.png",
       recomendation: [
         {
@@ -132,9 +130,8 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-    {
+    glass: {
       id: 5,
-      category: "glass",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/wine.png",
       recomendation: [
         {
@@ -170,9 +167,8 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-    {
+    cardboard: {
       id: 6,
-      category: "cardboard",
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
       recomendation: [
         {
@@ -212,6 +208,25 @@ exports.recomendation = (req, res) => {
         },
       ],
     },
-  ];
-  res.status(200).send(waste);
+  };
+  if (req.method === "POST") {
+    const category = req.body.category;
+    if (!category) {
+      res.status(401).send({ message: "category tidak boleh kosong" });
+    }
+    if (!waste[category]) {
+      res.status(40).send({ message: "category tidak ditemukan" });
+    }
+    res.status(200).send(waste[category]);
+  }
+  if (req.method === "GET") {
+    res.status(200).send(waste);
+  }
+};
+
+exports.main = (req, res) => {
+  const corsFn = cors();
+  corsFn(req, res, function () {
+    recomendation(req, res);
+  });
 };
