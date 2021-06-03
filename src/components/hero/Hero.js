@@ -9,10 +9,17 @@ export default function Hero() {
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
             Save Our Earth
             <br className="inline-block" />
+<<<<<<< HEAD
             With Recycle Your waste
           </h1>
           <p className="mb-8 leading-relaxed text-gray-100 md:w-3/4 lg:w-2/3">
             Mari kurangi sampah di muka bumi dengan mendaurulang sampah kamu.
+=======
+            With Recycle Your Waste
+          </h1>
+          <p className="mb-8 leading-relaxed text-gray-100 md:w-3/4 lg:w-2/3">
+            Mari kurangi sampah di muka bumi dengan mendaur ulang sampah kamu.
+>>>>>>> initial commit
             Kami menyediakan alat untuk membantu kamu menentukan sampah yang
             dapat didaur ulang. Karena setiap usaha kamu sangat berarti bagi
             bumi kita.
