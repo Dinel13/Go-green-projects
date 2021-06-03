@@ -1,6 +1,7 @@
 # Recomendation API
 
 ## get all categories
+
 gat all data recomendations for all categories
 
 **URL** : `https://asia-southeast2-our-philosophy-314515.cloudfunctions.net/recomendation`
@@ -21,7 +22,9 @@ gat all data recomendations for all categories
 
 ```json
 {
-  "plastic": {
+  [
+    {
+    "name": "plastic",
     "id": 1,
     "icon": "https://storage.googleapis.com/b21-cap0199/garbage_icon/no-plastic-bottles.png",
     "recomendation": [
@@ -33,8 +36,9 @@ gat all data recomendations for all categories
       },
       ....
     ]
-  },
-  "trash": {
+    },
+    {
+    "name": "trash",
     "id": 2,
     "icon": "https://storage.googleapis.com/b21-cap0199/garbage_icon/garbage.png",
     "recomendation": [
@@ -46,7 +50,8 @@ gat all data recomendations for all categories
       }
       ...
     ]
-  },
+    },
+  ]
   ...
 }
 ```
@@ -86,6 +91,7 @@ Provide CATEGORY to be search.
 
 ```json
 {
+    "name": "paper",
     "id": 3,
     "icon": "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
     "recomendation": [

@@ -9,8 +9,9 @@
 const cors = require("cors");
 
 const recomendation = (req, res) => {
-  const waste = {
-    plastic: {
+  const waste = [
+    {
+      name: "plastic",
       id: 1,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/no-plastic-bottles.png",
       recomendation: [
@@ -46,7 +47,8 @@ const recomendation = (req, res) => {
         },
       ],
     },
-    trash: {
+    {
+      name: "trash",
       id: 2,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/garbage.png",
       recomendation: [
@@ -58,7 +60,8 @@ const recomendation = (req, res) => {
         },
       ],
     },
-    paper: {
+    {
+      name: "paper",
       id: 3,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
       recomendation: [
@@ -94,7 +97,8 @@ const recomendation = (req, res) => {
         },
       ],
     },
-    metal: {
+    {
+      name: "metal",
       id: 4,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/canned-food.png",
       recomendation: [
@@ -130,7 +134,8 @@ const recomendation = (req, res) => {
         },
       ],
     },
-    glass: {
+    {
+      name: "glass",
       id: 5,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/wine.png",
       recomendation: [
@@ -167,7 +172,8 @@ const recomendation = (req, res) => {
         },
       ],
     },
-    cardboard: {
+    {
+      name: "cardboard",
       id: 6,
       icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
       recomendation: [
@@ -208,16 +214,19 @@ const recomendation = (req, res) => {
         },
       ],
     },
-  };
+  ];
+
   if (req.method === "POST") {
     const category = req.body.category;
     if (!category) {
       res.status(401).send({ message: "category tidak boleh kosong" });
     }
-    if (!waste[category]) {
+    const result = waste.filter((item) => item.name === category);
+
+    if (result.length <= 0) {
       res.status(404).send({ message: "category tidak ditemukan" });
     }
-    res.status(200).send(waste[category]);
+    res.status(200).send(result);
   }
   if (req.method === "GET") {
     res.status(200).send(waste);
