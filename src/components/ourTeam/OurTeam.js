@@ -1,10 +1,20 @@
 import React from "react";
 import udin from "../../assets/udin.jpg";
+<<<<<<< HEAD
+=======
+import ainun from "../../assets/ainun.jpeg"
+import alawi from "../../assets/alawi.png"
+import okki from "../../assets/okki.jpeg"
+>>>>>>> initial commit
 
 const teams = [
   {
     name: "Salahuddin",
+<<<<<<< HEAD
     job: "Full-Stack Developper",
+=======
+    job: "Full-Stack Developer",
+>>>>>>> initial commit
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: udin,
@@ -13,16 +23,28 @@ const teams = [
   },
   {
     name: "Ainun Annisa",
+<<<<<<< HEAD
     job: "Cloud Engginer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
     linkedin: "https://www.linkedin.com/",
+=======
+    job: "Cloud Engineer",
+    motto:
+      "Don't follow trend, make your own trend " ,
+    image: ainun,
+    linkedin: "https://www.linkedin.com/in/ainun-annisa-k-17005120b/",
+>>>>>>> initial commit
     university: "Universitas Hasanuddin, Makassar",
   },
   {
     name: "Dicky",
+<<<<<<< HEAD
     job: "Android Developper",
+=======
+    job: "Android Developer",
+>>>>>>> initial commit
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
@@ -31,10 +53,17 @@ const teams = [
   },
   {
     name: "Alawi",
+<<<<<<< HEAD
     job: "Android Developper",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
+=======
+    job: "Android Developer",
+    motto:
+      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
+    image: alawi,
+>>>>>>> initial commit
     linkedin: "https://www.linkedin.com/",
     university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
   },
@@ -43,7 +72,11 @@ const teams = [
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
+<<<<<<< HEAD
     image: "https://dummyimage.com/203x203",
+=======
+    image: okki,
+>>>>>>> initial commit
     linkedin: "https://www.linkedin.com/",
     university: "Universitas Brawijaya, Malang",
   },
@@ -75,8 +108,13 @@ export default function OurTeam() {
         </div>
         <div className="flex flex-wrap -m-4">
           {teams.map((team) => (
+<<<<<<< HEAD
             <div className="p-3.5 lg:w-1/3 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
+=======
+            <div className="p-4 lg:w-1/3 md:w-1/2">
+              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg ">
+>>>>>>> initial commit
                 <img
                   loading="lazy"
                   alt={team.nama}
@@ -95,7 +133,11 @@ export default function OurTeam() {
                     href={team.linkedin}
                     target="_blank"
                     rel="noreferrer"
+<<<<<<< HEAD
                     className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 lg:mb-0 font-bold"
+=======
+                    className="text-gray-600 inline-flex  items-center mb-2 hover:text-gray-800 font-bold"
+>>>>>>> initial commit
                   >
                     Selengkapnya
                     <svg
