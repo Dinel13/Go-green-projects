@@ -63,7 +63,7 @@ const recomendation = (req, res) => {
     {
       name: "paper",
       id: 3,
-      icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/layer.png",
+      icon: "https://storage.googleapis.com/b21-cap0199/garbage_icon/paper.png",
       recomendation: [
         {
           id: 1,
@@ -123,13 +123,13 @@ const recomendation = (req, res) => {
         {
           id: 4,
           name: "Tea Light Holder",
-          image: "https://storage.googleapis.com/b21-cap0199/metal/pin.jpg",
+          image: "https://storage.googleapis.com/b21-cap0199/metal/tea.jpg",
           desc: "https://www.youtube.com/watch?v=Dw4Nw22E2_o",
         },
         {
           id: 5,
           name: "Herb Garden",
-          image: "https://storage.googleapis.com/b21-cap0199/metal/clut.jpg",
+          image: "https://storage.googleapis.com/b21-cap0199/metal/herb.jpg",
           desc: "https://www.youtube.com/watch?v=Tx9ibFbYoho",
         },
       ],
@@ -154,7 +154,7 @@ const recomendation = (req, res) => {
         {
           id: 3,
           name: "Painted Flower Vases",
-          image: "http",
+          image: "https://storage.googleapis.com/b21-cap0199/glass/vase.jpg",
           desc: "https://www.youtube.com/watch?v=gZpU4PDiaCI",
         },
 
@@ -167,7 +167,7 @@ const recomendation = (req, res) => {
         {
           id: 5,
           name: "Etch Your Own Soap Bottle",
-          image: "https://storage.googleapis.com/b21-cap0199/glass/candle.jpg",
+          image: "https://storage.googleapis.com/b21-cap0199/glass/etch.jpg",
           desc: "https://www.youtube.com/watch?v=XUibyE-2hEE",
         },
       ],
@@ -195,7 +195,7 @@ const recomendation = (req, res) => {
           id: 3,
           name: "Geometric Cardboard Lamp ",
           image:
-            "https://storage.googleapis.com/b21-cap0199/cardboard/float.jpg",
+            "https://storage.googleapis.com/b21-cap0199/cardboard/lamp.jpg",
           desc: "https://www.youtube.com/watch?v=QEHswaSx9Vg",
         },
         {
@@ -209,7 +209,7 @@ const recomendation = (req, res) => {
           id: 5,
           name: "Faux Industrial Metal Letters",
           image:
-            "https://storage.googleapis.com/b21-cap0199/cardboard/desktop.jpg",
+            "https://storage.googleapis.com/b21-cap0199/cardboard/faux.jpg",
           desc: "https://www.youtube.com/watch?v=XQZK7XFaQJM",
         },
       ],
@@ -226,7 +226,7 @@ const recomendation = (req, res) => {
     if (result.length <= 0) {
       res.status(404).send({ message: "category tidak ditemukan" });
     }
-    res.status(200).send(result);
+    res.status(200).send(result[0].recomendation);
   }
   if (req.method === "GET") {
     res.status(200).send(waste);
