@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Rekomendation from "../components/rekomendation/Rekomendation";
+import OneCategory from "../components/rekomendation/OneCategory";
+import AllCategory from "../components/rekomendation/AllCategory";
 
 export default function Recycle() {
   const [img, setImg] = useState(null);
@@ -187,7 +188,8 @@ export default function Recycle() {
           </Link>
         )}
         <hr className="my-8" />
-        {rekomendasi && <Rekomendation category={status.success || "glass"} />}
+        {/* {rekomendasi && <OneCategory category={status.success || "glass"} />} */}
+        {rekomendasi && <AllCategory />}
       </div>
     </section>
   );
