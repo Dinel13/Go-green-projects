@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LazyLoad from "react-lazy-load";
 
 import "./loading.css";
 
@@ -91,11 +92,13 @@ export default function OneCategory({ category }) {
               data.map((item, index) => (
                 <div className="p-3.5 sm:w-1/2 md:w-1/3 lg:w-1/4" key={index}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-110">
-                    <img
-                      className="lg:h-48 md:h-36 w-full object-cover object-center"
-                      src={item.image}
-                      alt={item.name}
-                    />
+                    <LazyLoad offsetVertical={20}>
+                      <img
+                        className="lg:h-48 md:h-36 w-full object-cover object-center"
+                        src={item.image}
+                        alt={item.name}
+                      />
+                    </LazyLoad>
                     <div className="p-6">
                       <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">
                         {data.name}
