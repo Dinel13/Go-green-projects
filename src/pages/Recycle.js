@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import OneCategory from "../components/rekomendation/OneCategory";
 import AllCategory from "../components/rekomendation/AllCategory";
 
@@ -7,6 +8,11 @@ export default function Recycle() {
   const [img, setImg] = useState(null);
   const [showAllCategory, setShowAllCategory] = useState(false);
   const [rekomendasi, setRekomendasi] = useState(null);
+=======
+
+export default function Recycle() {
+  const [img, setImg] = useState(null);
+>>>>>>> initial commit
   const [status, setStatus] = useState({
     success: "",
     error: "",
@@ -16,8 +22,11 @@ export default function Recycle() {
 
   const submitImage = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     setRekomendasi(null); //to hidden previus rekom
     setShowAllCategory(false); //to hidden all category
+=======
+>>>>>>> initial commit
     setStatus((prevState) => ({
       ...prevState,
       pending: true,
@@ -52,6 +61,7 @@ export default function Recycle() {
       setTimeout(() => setStatus((prevState) => ({ ...prevState, error: "" })));
     }
   };
+<<<<<<< HEAD
 
   const setRekomendasiHandler = (recom) => {
     setRekomendasi(recom);
@@ -62,6 +72,12 @@ export default function Recycle() {
     <section className="text-gray-600 body-font" style={{ minHeight: "75vh" }}>
       <div className="container px-5 py-20 mx-auto">
         <div className="flex flex-col text-center w-full mb-6">
+=======
+  return (
+    <section className="text-gray-600 body-font" style={{ minHeight: "75vh" }}>
+      <div className="container px-5 py-20 mx-auto">
+        <div className="flex flex-col text-center w-full mb-10">
+>>>>>>> initial commit
           <h1 className="text-3xl font-medium title-font mb-4 text-gray-700">
             Klasifikasi Sampah
           </h1>
@@ -74,9 +90,13 @@ export default function Recycle() {
             </span>
             . Setelah jenis sampah diketahui kamu akan mendapatkan rekomendasi
             benda apa saja yang dapat kamu buat dari sampah tersebut. Upload
+<<<<<<< HEAD
             file kamu untuk mencoba. atau tekan{" "}
             <span className="font-medium text-gray-800">lihat semua</span> untuk
             melihat semua category dan rekomendasinya
+=======
+            foto sampah kamu untuk mencoba
+>>>>>>> initial commit
           </p>
         </div>
 
@@ -102,6 +122,7 @@ export default function Recycle() {
             </svg>
           </button>
         ) : (
+<<<<<<< HEAD
           <>
             <form
               onSubmit={submitImage}
@@ -141,6 +162,32 @@ export default function Recycle() {
               </div>
             </form>
           </>
+=======
+          <form
+            onSubmit={submitImage}
+            id="formku"
+            className="flex items-center justify-center"
+            encType="multipart/form-data"
+          >
+            <label className="inline-flex items-center bg-green-300 text-gray-700 w-1/2 md:w-4/6 py-2 px-3 mr-5 focus:outline-none hover:bg-green-600 rounded-lg hover:text-gray-100">
+              <input
+                onChange={(e) => setImg(e.target.files[0])}
+                type="file"
+                name="imge"
+                key="img"
+                accept="image/*"
+                alt="your image"
+                required
+              />
+            </label>
+            <button
+              type="submit"
+              className="px-3 py-3 items-center bg-green-600 hover:bg-green-800  text-gray-50 rounded-md"
+            >
+              Kirim gambar
+            </button>
+          </form>
+>>>>>>> initial commit
         )}
 
         {status.error && (
@@ -171,6 +218,7 @@ export default function Recycle() {
           </div>
         )}
         {status.success && (
+<<<<<<< HEAD
           <div className="alert flex flex-row my-2 items-center bg-green-200  px-5 py-3 rounded border-b-2 border-green-300 justify-between">
             <div className="flex items-center">
               <div className="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
@@ -206,6 +254,35 @@ export default function Recycle() {
             >
               Lihat rekomendasinya
             </button>
+=======
+          <div className="alert flex flex-row my-2 items-center bg-green-200  px-5 py-3 rounded border-b-2 border-green-300">
+            <div className="alert-icon flex items-center bg-green-100 border-2 border-green-500 justify-center h-10 w-10 flex-shrink-0 rounded-full">
+              <span className="text-green-500">
+                <svg
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  className="h-6 w-6"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </span>
+            </div>
+            <div className="alert-content ml-4">
+              <div className="alert-title font-semibold text-lg text-green-800">
+                Prediksi sukses
+              </div>
+              <div className="alert-description text-green-600">
+                Hasil prediksinya adalah{" "}
+                <span className="text-2xl text-gray-700 font-bold">
+                  {status.success}
+                </span>
+              </div>
+            </div>
+>>>>>>> initial commit
           </div>
         )}
         {status.feedback && !status.pending && (
@@ -213,9 +290,12 @@ export default function Recycle() {
             kirim feedback
           </Link>
         )}
+<<<<<<< HEAD
         <hr className="my-8" />
         {showAllCategory && <AllCategory onLihatRekomendasi={setRekomendasi} />}
         {rekomendasi && <OneCategory category={rekomendasi} />}
+=======
+>>>>>>> initial commit
       </div>
     </section>
   );
