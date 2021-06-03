@@ -16,6 +16,7 @@ export default function Recycle() {
 
   const submitImage = async (e) => {
     e.preventDefault();
+    setRekomendasi(null); //to hidden previus rekom
     setShowAllCategory(false); //to hidden all category
     setStatus((prevState) => ({
       ...prevState,
@@ -128,7 +129,11 @@ export default function Recycle() {
                 </button>
                 <button
                   type="reset"
-                  onClick={() => setShowAllCategory(true)}
+                  onClick={() => {
+                    setShowAllCategory(true);
+                    setRekomendasi(null);
+                    setStatus({});
+                  }}
                   className="px-3 py-3 items-center border-green-600 border-2 hover:bg-green-600 hover:text-gray-100  text-gray-700 rounded"
                 >
                   Lihat semua
@@ -199,7 +204,7 @@ export default function Recycle() {
               onClick={() => setRekomendasiHandler(status.success)}
               className="py-3 px-3 bg-green-700 rounded-md hover:bg-green-800 text-gray-50"
             >
-              Lihat rekomendasi
+              Lihat rekomendasinya
             </button>
           </div>
         )}
