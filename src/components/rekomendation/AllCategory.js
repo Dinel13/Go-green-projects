@@ -77,8 +77,8 @@ export default function AllCategory({ onLihatRekomendasi }) {
           </h1>
           <div className="flex flex-wrap -m-4">
             {data &&
-              data.map((item) => (
-                <div className="lg:w-1/3 md:w-1/2 p-4 w-full">
+              data.map((item, index) => (
+                <div className="lg:w-1/3 md:w-1/2 p-4 w-full" key={index}>
                   <div className="flex items-center h-32 border-2 p-3  overflow-visible  border-gray-200 border-opacity-80 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-110">
                     <img
                       alt="ecommerce"
@@ -105,10 +105,10 @@ export default function AllCategory({ onLihatRekomendasi }) {
                           className="w-4 h-4 ml-2"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
-                          stroke-width="2"
+                          strokeWidth="2"
                           fill="none"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
                         >
                           <path d="M5 12h14"></path>
                           <path d="M12 5l7 7-7 7"></path>

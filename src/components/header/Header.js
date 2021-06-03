@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-<<<<<<< HEAD
-import logo from "../../assets/logo.jpg";
-=======
 import logo from "../../assets/logo.png";
->>>>>>> initial commit
 import { logout } from "../../store/authSlice";
 
 export default function Header() {
@@ -76,21 +72,13 @@ export default function Header() {
           <div>
             <Link
               to="/login"
-<<<<<<< HEAD
               className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white mt-4 lg:mt-0"
-=======
-              className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal hover:bg-green-800 mt-4 lg:mt-0"
->>>>>>> initial commit
             >
               Login
             </Link>
             <Link
               to="/signup"
-<<<<<<< HEAD
               className="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-green-700 hover:border-transparent hover:text-teal hover:bg-green-800 mt-4 lg:mt-0"
-=======
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white hover:border-transparent hover:text-teal hover:bg-green-800 mt-4 lg:mt-0"
->>>>>>> initial commit
             >
               Sign up
             </Link>

@@ -14,18 +14,9 @@ const teams = [
     name: "Ainun",
     job: "Cloud Engineer",
     motto: "Don't follow trend, make your own trend ",
-    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Ainun.jpg",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ainun.jpg",
     linkedin: "https://www.linkedin.com/in/ainun-annisa-k-17005120b/",
     university: "Universitas Hasanuddin, Makassar",
-  },
-  {
-    name: "Dicky",
-    job: "Android Developer",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/in/dicky-widya-angga-kusuma-b69ba8160",
-    university: "Universitas Mulawarman, Samarinda",
   },
   {
     name: "Alawi",
@@ -35,6 +26,15 @@ const teams = [
     image: "https://storage.googleapis.com/b21-cap0199/ourteam/ALawi.jpg",
     linkedin: "https://www.linkedin.com/in/wiwittt27/",
     university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
+  },
+  {
+    name: "Dicky",
+    job: "Android Developer",
+    motto:
+      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/dicky.jpg",
+    linkedin: "https://www.linkedin.com/in/dicky-widya-angga-kusuma-b69ba8160",
+    university: "Universitas Mulawarman, Samarinda",
   },
   {
     name: "Okky",
@@ -74,7 +74,7 @@ export default function OurTeam() {
         </div>
         <div className="flex flex-wrap -m-4">
           {teams.map((team) => (
-            <div className="p-3.5 lg:w-1/3 md:w-1/2">
+            <div className="p-3.5 lg:w-1/3 md:w-1/2" key={team.name}>
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
                 <img
                   loading="lazy"
