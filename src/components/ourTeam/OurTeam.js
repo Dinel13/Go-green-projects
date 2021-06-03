@@ -1,18 +1,17 @@
 import React from "react";
-import udin from "../../assets/udin.jpg";
 
 const teams = [
   {
-    name: "Salahuddin",
+    name: "Huddin",
     job: "Full-Stack Developper",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: udin,
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Huddin.jpg",
     linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
     university: "Universitas Hasanuddin, Makassar",
   },
   {
-    name: "Ainun Annisa",
+    name: "Ainun",
     job: "Cloud Engginer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
@@ -26,7 +25,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/dicky-widya-angga-kusuma-b69ba8160",
     university: "Universitas Mulawarman, Samarinda",
   },
   {
@@ -34,8 +33,8 @@ const teams = [
     job: "Android Developper",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ALawi.jpg",
+    linkedin: "https://www.linkedin.com/in/wiwittt27/",
     university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
   },
   {
@@ -43,8 +42,9 @@ const teams = [
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Okky.jpeg",
+    linkedin:
+      "https://www.linkedin.com/in/muhammad-okki-graceda-mulyono-ab8a46206/",
     university: "Universitas Brawijaya, Malang",
   },
   {
@@ -53,7 +53,7 @@ const teams = [
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    linkedin: "https://www.linkedin.com/in/layyinatusshifa/",
     university: "Universitas Negeri Yogyakarta, Yogyakarta",
   },
 ];
@@ -80,7 +80,7 @@ export default function OurTeam() {
                 <img
                   loading="lazy"
                   alt={team.nama}
-                  className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-top mb-4"
+                  className="flex-shrink-0 rounded-lg w-full h-64 object-cover object-top mb-4"
                   src={team.image}
                 />
                 <div className="w-full text-left px-5 ">
@@ -95,7 +95,7 @@ export default function OurTeam() {
                     href={team.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 lg:mb-0 font-bold"
+                    className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 font-bold"
                   >
                     Selengkapnya
                     <svg

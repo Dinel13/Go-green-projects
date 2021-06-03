@@ -31,7 +31,7 @@ export default function OneCategory({ category }) {
             error: "Tidak bisa mendapatkan data",
           }));
         }
-        setData(data[0]);
+        setData(data);
         setStatus((prevState) => ({
           ...prevState,
           pending: false,
@@ -84,12 +84,12 @@ export default function OneCategory({ category }) {
       {data && (
         <>
           <h1 className="text-center text-gray-700 font-medium text-2xl pb-8">
-            Rekomendasi recycle untuk kategori {data.name}
+            Rekomendasi recycle untuk kategori {category}
           </h1>
           <div className="flex flex-wrap -m-4">
             {data &&
-              data.recomendation.map((item) => (
-                <div className="p-3.5 sm:w-1/2 md:w-1/3 lg:w-1/4">
+              data.map((item, index) => (
+                <div className="p-3.5 sm:w-1/2 md:w-1/3 lg:w-1/4" key={index}>
                   <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-110">
                     <img
                       className="lg:h-48 md:h-36 w-full object-cover object-center"
