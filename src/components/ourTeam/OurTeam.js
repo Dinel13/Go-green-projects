@@ -1,5 +1,7 @@
 import React from "react";
 
+import LazyLoad from "react-lazy-load";
+
 const teams = [
   {
     name: "Huddin",
@@ -76,12 +78,13 @@ export default function OurTeam() {
           {teams.map((team) => (
             <div className="p-3.5 lg:w-1/3 md:w-1/2" key={team.name}>
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
-                <img
-                  loading="lazy"
-                  alt={team.nama}
-                  className="flex-shrink-0 rounded-lg w-full h-64 object-cover object-top mb-4"
-                  src={team.image}
-                />
+                <LazyLoad heighth={200} offsetVertical={80}>
+                  <img
+                    alt={team.nama}
+                    className="flex-shrink-0 rounded-lg w-full h-64 object-cover object-top mb-4"
+                    src={team.image}
+                  />
+                </LazyLoad>
                 <div className="w-full text-left px-5 ">
                   <h2 className="title-font font-medium text-lg text-gray-900">
                     {team.name}

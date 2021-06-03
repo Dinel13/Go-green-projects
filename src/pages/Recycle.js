@@ -211,7 +211,7 @@ export default function Recycle() {
             kirim feedback
           </Link>
         )}
-        y <hr className="my-8" />
+        <hr className="my-8" />
         {showAllCategory && <AllCategory onLihatRekomendasi={setRekomendasi} />}
         {rekomendasi && <OneCategory category={rekomendasi} />}
       </div>
