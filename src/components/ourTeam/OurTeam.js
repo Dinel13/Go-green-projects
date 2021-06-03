@@ -75,8 +75,8 @@ export default function OurTeam() {
         </div>
         <div className="flex flex-wrap -m-4">
           {teams.map((team) => (
-            <div className="p-4 lg:w-1/3 md:w-1/2">
-              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg ">
+            <div className="p-3.5 lg:w-1/3 md:w-1/2">
+              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
                 <img
                   loading="lazy"
                   alt={team.nama}
@@ -95,7 +95,7 @@ export default function OurTeam() {
                     href={team.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-gray-600 inline-flex  items-center mb-2 hover:text-gray-800 font-bold"
+                    className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 lg:mb-0 font-bold"
                   >
                     Selengkapnya
                     <svg
