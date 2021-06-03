@@ -12,29 +12,15 @@ const teams = [
   },
   {
     name: "Ainun",
-<<<<<<< HEAD
->>>>>>> 5d44f5ef94c4f0479d5cae6689e6d5d6900e6524
-    job: "Cloud Engginer",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
-=======
     job: "Cloud Engineer",
-    motto:
-      "Don't follow trend, make your own trend " ,
-    image: ainun,
+    motto: "Don't follow trend, make your own trend ",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Ainun.jpg",
     linkedin: "https://www.linkedin.com/in/ainun-annisa-k-17005120b/",
->>>>>>> initial commit
     university: "Universitas Hasanuddin, Makassar",
   },
   {
     name: "Dicky",
-<<<<<<< HEAD
-    job: "Android Developper",
-=======
     job: "Android Developer",
->>>>>>> initial commit
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
     image: "https://dummyimage.com/203x203",
@@ -43,23 +29,11 @@ const teams = [
   },
   {
     name: "Alawi",
-<<<<<<< HEAD
-    job: "Android Developper",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-<<<<<<< HEAD
-    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ALawi.jpg",
-    linkedin: "https://www.linkedin.com/in/wiwittt27/",
-=======
-    image: "https://dummyimage.com/203x203",
-=======
     job: "Android Developer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: alawi,
->>>>>>> initial commit
-    linkedin: "https://www.linkedin.com/",
->>>>>>> 5d44f5ef94c4f0479d5cae6689e6d5d6900e6524
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ALawi.jpg",
+    linkedin: "https://www.linkedin.com/in/wiwittt27/",
     university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
   },
   {
@@ -67,18 +41,9 @@ const teams = [
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-<<<<<<< HEAD
     image: "https://storage.googleapis.com/b21-cap0199/ourteam/Okky.jpeg",
     linkedin:
       "https://www.linkedin.com/in/muhammad-okki-graceda-mulyono-ab8a46206/",
-=======
-<<<<<<< HEAD
-    image: "https://dummyimage.com/203x203",
-=======
-    image: okki,
->>>>>>> initial commit
-    linkedin: "https://www.linkedin.com/",
->>>>>>> 5d44f5ef94c4f0479d5cae6689e6d5d6900e6524
     university: "Universitas Brawijaya, Malang",
   },
   {
@@ -109,13 +74,8 @@ export default function OurTeam() {
         </div>
         <div className="flex flex-wrap -m-4">
           {teams.map((team) => (
-<<<<<<< HEAD
             <div className="p-3.5 lg:w-1/3 md:w-1/2">
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
-=======
-            <div className="p-4 lg:w-1/3 md:w-1/2">
-              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg ">
->>>>>>> initial commit
                 <img
                   loading="lazy"
                   alt={team.nama}
@@ -134,15 +94,7 @@ export default function OurTeam() {
                     href={team.linkedin}
                     target="_blank"
                     rel="noreferrer"
-<<<<<<< HEAD
                     className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 font-bold"
-=======
-<<<<<<< HEAD
-                    className="text-indigo-500 hover:text-indigo-600 inline-flex items-center md:mb-2 lg:mb-0 font-bold"
-=======
-                    className="text-gray-600 inline-flex  items-center mb-2 hover:text-gray-800 font-bold"
->>>>>>> initial commit
->>>>>>> 5d44f5ef94c4f0479d5cae6689e6d5d6900e6524
                   >
                     Selengkapnya
                     <svg
