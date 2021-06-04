@@ -25,7 +25,7 @@ const teams = [
     job: "Android Developer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ALawi.jpg",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Alawi.jpeg",
     linkedin: "https://www.linkedin.com/in/wiwittt27/",
     university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
   },
@@ -53,7 +53,7 @@ const teams = [
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/shifa.jpg",
     linkedin: "https://www.linkedin.com/in/layyinatusshifa/",
     university: "Universitas Negeri Yogyakarta, Yogyakarta",
   },
@@ -78,7 +78,7 @@ export default function OurTeam() {
           {teams.map((team) => (
             <div className="p-3.5 lg:w-1/3 md:w-1/2" key={team.name}>
               <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
-                <LazyLoad offsetVertical={80}>
+                <LazyLoad offsetVertical={100}>
                   <img
                     alt={team.nama}
                     className="flex-shrink-0 rounded-lg w-full h-64 object-cover object-top mb-4"

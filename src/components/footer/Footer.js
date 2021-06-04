@@ -66,6 +66,7 @@ export default function Footer() {
               <input
                 type="email"
                 ref={inputEmailRef}
+                placeholder="Masukkan email"
                 className="w-full px-2 py-4 mr-2  bg-gray-100 shadow-inner rounded-md border border-gray-400 focus:outline-none"
                 required
               />

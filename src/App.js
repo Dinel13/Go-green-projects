@@ -7,6 +7,7 @@ import Hero from "./components/hero/Hero";
 import Loading from "./components/loading/Loading";
 import NotifModal from "./components/modal/NotifModal";
 import OurTeam from "./components/ourTeam/OurTeam";
+import Testimonial from "./components/testimonial/Testimonial";
 
 const Feedback = React.lazy(() => import("./pages/Fedback"));
 const ForgotPassword = React.lazy(() => import("./pages/ForgotPassword"));
@@ -27,6 +28,7 @@ function App() {
             <Route path="/" exact>
               <Hero />
               <OurTeam />
+              <Testimonial />
             </Route>
             <Route path="/login" exact>
               <Login />
