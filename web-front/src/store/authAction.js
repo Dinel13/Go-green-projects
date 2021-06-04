@@ -1,7 +1,7 @@
 import { login as loginSlice } from "./authSlice";
 import { showNotification } from "./uiSlice";
 
-export const signup = (email, name, password) => {
+export const signup = (email, name, password, successLogin, failLogin) => {
   return async (dispatch) => {
     const signupToBackend = async () => {
       const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/signup`, {
@@ -24,6 +24,7 @@ export const signup = (email, name, password) => {
     try {
       const res = await signupToBackend();
       dispatch(loginSlice(res));
+      successLogin();
     } catch (error) {
       dispatch(
         showNotification({
@@ -32,11 +33,12 @@ export const signup = (email, name, password) => {
           message: error.message,
         })
       );
+      failLogin();
     }
   };
 };
 
-export const login = (email, password) => {
+export const login = (email, password, successLogin, failLogin) => {
   return async (dispatch) => {
     const loginToBackend = async () => {
       const res = await fetch(`${process.env.REACT_APP_SERVER_URL}/login`, {
@@ -60,8 +62,10 @@ export const login = (email, password) => {
 
     try {
       const result = await loginToBackend();
-      dispatch(loginSlice (result));
+      dispatch(loginSlice(result));
+      successLogin();
     } catch (error) {
+      failLogin();
       dispatch(
         showNotification({
           status: "error",
@@ -72,4 +76,3 @@ export const login = (email, password) => {
     }
   };
 };
-

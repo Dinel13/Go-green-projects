@@ -2,27 +2,25 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import logo from "../../assets/logo.jpg";
+import logo from "../../assets/logo.png";
 import { logout } from "../../store/authSlice";
 
 export default function Header() {
   const token = useSelector((state) => state.auth.token);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const clickMenu = () => {
-    const navItem = document.getElementById("nav-item")
-    if (navItem.classList.contains("flex") ) {
-      navItem.classList.remove("flex")
-      navItem.classList.add("lg:flex")
-      navItem.classList.add("hidden")
-
+    const navItem = document.getElementById("nav-item");
+    if (navItem.classList.contains("flex")) {
+      navItem.classList.remove("flex");
+      navItem.classList.add("lg:flex");
+      navItem.classList.add("hidden");
     } else {
-      navItem.classList.add("flex")
-      navItem.classList.remove("lg:flex")
-      navItem.classList.remove("hidden")
-
+      navItem.classList.add("flex");
+      navItem.classList.remove("lg:flex");
+      navItem.classList.remove("hidden");
     }
-  }
+  };
   return (
     <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
       <div className="flex items-center flex-no-shrink text-white mr-6">
@@ -43,23 +41,23 @@ export default function Header() {
           </svg>
         </button>
       </div>
-      <div className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex" id="nav-item">
+      <div
+        className="w-full flex-grow lg:items-center lg:w-auto hidden lg:flex"
+        id="nav-item"
+      >
         <div className="text-sm flex-grow">
           <Link
-            to="/feedback"
-            href="#responsive-header"
+            to="/recycle"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
-            feedback
+            Recycle
           </Link>
-          <a
-            href="https://github.com/Dinel13/Go-green-projects"
-            target="_blank"
-            rel="noreferrer"
+          <Link
+            to="/feedback"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
-            Source Code
-          </a>
+            Feedback
+          </Link>
         </div>
         {token ? (
           <div>

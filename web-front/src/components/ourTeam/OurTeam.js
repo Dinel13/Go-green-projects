@@ -1,54 +1,61 @@
 import React from "react";
-import udin from "../../assets/udin.jpg";
+
+import LazyLoad from "react-lazy-load";
 
 const teams = [
   {
-    name: "Salahuddin",
-    job: "Full-Stack Developper",
+    name: "Huddin",
+    job: "Full-Stack Developer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: udin,
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Huddin.jpg",
     linkedin: "https://www.linkedin.com/in/salahuddin-hafid/",
+    university: "Universitas Hasanuddin, Makassar",
   },
   {
-    name: "Ainun Annisa",
-    job: "Cloud Engginer",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
-  },
-  {
-    name: "Dicky",
-    job: "Android Developper",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    name: "Ainun",
+    job: "Cloud Engineer",
+    motto: "Don't follow trend, make your own trend ",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/ainun.jpg",
+    linkedin: "https://www.linkedin.com/in/ainun-annisa-k-17005120b/",
+    university: "Universitas Hasanuddin, Makassar",
   },
   {
     name: "Alawi",
-    job: "Android Developper",
+    job: "Android Developer",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Alawi.jpeg",
+    linkedin: "https://www.linkedin.com/in/wiwittt27/",
+    university: "Universitas AMIKOM Yogyakarta, Yogyakarta",
+  },
+  {
+    name: "Dicky",
+    job: "Android Developer",
+    motto:
+      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/dicky.jpg",
+    linkedin: "https://www.linkedin.com/in/dicky-widya-angga-kusuma-b69ba8160",
+    university: "Universitas Mulawarman, Samarinda",
   },
   {
     name: "Okky",
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/Okky.jpeg",
+    linkedin:
+      "https://www.linkedin.com/in/muhammad-okki-graceda-mulyono-ab8a46206/",
+    university: "Universitas Brawijaya, Malang",
   },
   {
     name: "Shifa",
     job: "Data Scientist",
     motto:
       "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://dummyimage.com/203x203",
-    linkedin: "https://www.linkedin.com/",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/shifa.jpg",
+    linkedin: "https://www.linkedin.com/in/layyinatusshifa/",
+    university: "Universitas Negeri Yogyakarta, Yogyakarta",
   },
 ];
 
@@ -64,29 +71,33 @@ export default function OurTeam() {
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
             Team Manut adalah nama yang kami pilih untuk dijadikan identitas.
             Dibentuk untuk satu tujuan bersama. Terpisah oleh lautan dan zona
-            waktu adalah bagian kebanggan tersendiri dari team kami.
+            waktu adalah kebanggaan tersendiri bagi kami.
           </p>
         </div>
         <div className="flex flex-wrap -m-4">
           {teams.map((team) => (
-            <div className="p-4 lg:w-1/3 md:w-1/2">
-              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg ">
-                <img
-                  alt={team.nama}
-                  className="flex-shrink-0 rounded-lg w-full h-56 object-cover object-center mb-4"
-                  src={team.image}
-                />
-                <div className="w-full">
+            <div className="p-3.5 lg:w-1/3 md:w-1/2" key={team.name}>
+              <div className="h-full flex flex-col items-center text-center border-2 rounded-lg transition duration-500 ease-in-out hover:bg-gray-100 transform hover:-translate-y-1 hover:scale-105">
+                <LazyLoad offsetVertical={100}>
+                  <img
+                    alt={team.nama}
+                    className="flex-shrink-0 rounded-lg w-full h-64 object-cover object-top mb-4"
+                    src={team.image}
+                  />
+                </LazyLoad>
+                <div className="w-full text-left px-5 ">
                   <h2 className="title-font font-medium text-lg text-gray-900">
                     {team.name}
                   </h2>
-                  <h3 className="text-gray-500 mb-3">{team.job}r</h3>
+                  <p className="text-gray-400 text-sm">{team.university}</p>
+                  <h3 className="text-gray-600 ">{team.job}</h3>
+                  <hr className="my-2" />
                   <p className="mb-4">{team.motto}</p>
                   <a
                     href={team.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-gray-600 inline-flex  items-center mb-2 hover:text-gray-800 font-bold"
+                    className="text-indigo-500 hover:text-indigo-600 inline-flex items-center mb-2 font-bold"
                   >
                     Selengkapnya
                     <svg

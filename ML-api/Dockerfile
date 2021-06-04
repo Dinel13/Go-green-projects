@@ -9,7 +9,7 @@ COPY requirements.txt /
 RUN pip install -r requirements.txt
 RUN pip install gunicorn
 
-COPY fix.h5 /
+COPY best_model.h5 /
 # Set the WORKDIR to be the folder
 COPY . /app
 # Expose port 5000
