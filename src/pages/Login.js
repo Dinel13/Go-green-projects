@@ -42,7 +42,7 @@ export default function Login() {
       <form className="mt-6" onSubmit={loginHandler}>
         <div>
           <label
-            htmlFor="username"
+            htmlFor="email"
             className="block text-sm text-gray-800 dark:text-gray-200"
           >
             Email
@@ -50,6 +50,7 @@ export default function Login() {
           <input
             ref={email}
             type="email"
+            id="email"
             required
             className="required block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
           />
@@ -73,6 +74,7 @@ export default function Login() {
           <input
             ref={password}
             type="password"
+            id="password"
             required
             className="required block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
           />
