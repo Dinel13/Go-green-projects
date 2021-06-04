@@ -2,7 +2,7 @@
 FROM node:12-alpine as react-build
 WORKDIR /app
 COPY . ./
-RUN yarn
+RUN yarn add
 RUN yarn build
 
 # server environment
