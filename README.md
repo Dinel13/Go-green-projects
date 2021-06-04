@@ -20,4 +20,4 @@ Capstone Project Bangkit 2021
 
 
 ## Design Infrastructure 
-![Design Infrastructure - GGP](https://user-images.githubusercontent.com/70701995/119647618-10e5f100-be53-11eb-9bd9-a7b0ef2bee0d.png)
+![Design Infrastructure revised](https://user-images.githubusercontent.com/70701995/120318678-b3e6b100-c312-11eb-8854-fe2c4db8ff40.png)
