@@ -39,6 +39,15 @@ const teams = [
     university: "Universitas Mulawarman, Samarinda",
   },
   {
+    name: "Shifa",
+    job: "Data Scientist",
+    motto:
+      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
+    image: "https://storage.googleapis.com/b21-cap0199/ourteam/shifa.jpg",
+    linkedin: "https://www.linkedin.com/in/layyinatusshifa/",
+    university: "Universitas Negeri Yogyakarta, Yogyakarta",
+  },
+  {
     name: "Okky",
     job: "Data Scientist",
     motto:
@@ -47,15 +56,6 @@ const teams = [
     linkedin:
       "https://www.linkedin.com/in/muhammad-okki-graceda-mulyono-ab8a46206/",
     university: "Universitas Brawijaya, Malang",
-  },
-  {
-    name: "Shifa",
-    job: "Data Scientist",
-    motto:
-      "Always try everything, study anywhere, with anyone, give the best to achieve a definite goal",
-    image: "https://storage.googleapis.com/b21-cap0199/ourteam/shifa.jpg",
-    linkedin: "https://www.linkedin.com/in/layyinatusshifa/",
-    university: "Universitas Negeri Yogyakarta, Yogyakarta",
   },
 ];
 
@@ -89,8 +89,8 @@ export default function OurTeam() {
                   <h2 className="title-font font-medium text-lg text-gray-900">
                     {team.name}
                   </h2>
-                  <p className="text-gray-400 text-sm">{team.university}</p>
-                  <h3 className="text-gray-600 ">{team.job}</h3>
+                  <p className="text-gray-600 text-sm">{team.university}</p>
+                  <h3 className="text-gray-700 ">{team.job}</h3>
                   <hr className="my-2" />
                   <p className="mb-4">{team.motto}</p>
                   <a
