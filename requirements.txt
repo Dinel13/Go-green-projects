@@ -1,4 +1,5 @@
 tensorflow == 2.5.0
+tensorflow-hub == 0.12.0
 pillow == 8.0
 Flask == 1.1.2    
 # numpy == 1.18.0
