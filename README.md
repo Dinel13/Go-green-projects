@@ -12,14 +12,14 @@ For Capstone Project Bangkit 2021
 ## Team Manut || B21-CAP0199
 
 - **Cloud Computing Path**
-  - [Huddin](https://github.com/Dinel13/ "salahuddin's github profile") (C2082045) as **Full stack Developper**
+  - [Huddin](https://github.com/Dinel13/ "salahuddin's github profile") (C2082045) as **Full stack Developer**
   - [Ainun](https://github.com/kazriel/ "Ainun's github profile") (C2082042) as **Cloud Architec and Engineer**
 - **Android Path**
-  - [Alawi](https://github.com/wiwittt27/ "Alawi Github profile") (C2082042) as **Android Developper**
-  - [Dicky](https://github.com/dicky7/ "Dicky Github profile") (C2082042) as **Android Developper**
+  - [Alawi](https://github.com/wiwittt27/ "Alawi Github profile") (C2082042) as **Android Developer**
+  - [Dicky](https://github.com/dicky7/ "Dicky Github profile") (C2082042) as **Android Developer**
 - **Machine Learning Path**
-  - [Okky](https://github.com/lemkova/ "Okky's Github profile") (C2082042) as **Data scientisc**
-  - Shifa (C208204) as **Data scientisc**
+  - [Okky](https://github.com/lemkova/ "Okky's Github profile") (C2082042) as **Data Scientist**
+  - Shifa (C208204) as **Data Scientist**
     <br/>
 
 ---
@@ -81,8 +81,8 @@ Building models that able to clasificate waste by six label. Build process using
 
 **Dataset Link:**
 
-- Waste
-  - [Early stage symptoms of COVID-19 patient's](https://github.com/garythung/trashnet)
+- Garbage Dataset
+  - [Trashnet Dataset](https://github.com/garythung/trashnet)
 
 Preview of the image and data used are shown in the picture below.
 
@@ -106,21 +106,18 @@ Preview of the image and data used are shown in the picture below.
 2. [Python](https://www.python.org/downloads/) version 3.6 or above
 3. Latest version of Tensorflow 2.5 (or you can update again by rerunning .ipynb and updating models)
 
-<!-- ## How to use
+## Documentation
 
- 1. [Create `kaggle.json` from Kaggle](https://github.com/Kaggle/kaggle-api#api-credentials)
-2. Go to your Kaggle profile then download your Kaggle API.
-   - My Account → Look for API section → Create New API Token
-3. Open `.ipynb` with Google Colaboratory using `open in colab`
-4. "Save a copy in Drive" to run and edit with your account. Click `File` > `Save a copy in Drive` in your Google Colaboratory.
-5. Upload your `kaggle.json` if asked to upload it.
-6. Will download the dataset on kaggle
-7. If using GoogleDrive for the dataset, `GoogleAuth` click on the given link and sign in with your Google Account.
-8. Done :) -->
+1. Download dataset [Trashnet Dataset](https://github.com/garythung/trashnet)
+2. Create the training and validation batch using the train generator.
+3. Create the label by using the train generator function
+4. Train and validate the model
+5. Save model to .h5 file
+6. Deploy .h5 model in Flask Rest API
+7. Mobile App and Web App consume API with upload image and return the result with JSON
 
 ## References
 
-- [CNN from scratch with 98% accuracy](https://www.kaggle.com/aninditapani/cnn-from-scratch-with-98-accuracy)
 - [Classification of Trash for Recyclability Status](http://cs229.stanford.edu/proj2016/report/ThungYang-ClassificationOfTrashForRecyclabilityStatus-report.pdf)
 
 ## Thank You :)
