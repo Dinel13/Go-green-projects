@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema(
       min: 1000,
       max: 99999999,
     },
-    sellerId: {
+    seller: {
       type: Object,
       require: true,
     },

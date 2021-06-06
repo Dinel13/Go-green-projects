@@ -5,7 +5,7 @@ const create = async (req, res, next) => {
   const {
     name,
     price,
-    sellerId,
+    seller,
     qty,
     category,
     image,
@@ -18,7 +18,7 @@ const create = async (req, res, next) => {
   const newProduct = new Product({
     name,
     price,
-    sellerId,
+    seller,
     qty,
     category,
     image,
@@ -42,7 +42,7 @@ const create = async (req, res, next) => {
 const getAll = async (req, res, next) => {
   try {
     const products = await Product.find()
-      .select("_id name price sortDesc category image postedBy createdAt")
+      .select("_id name price sortDesc category image seller createdAt")
       .exec();
     res.status(200).json({ data: products });
   } catch (error) {
