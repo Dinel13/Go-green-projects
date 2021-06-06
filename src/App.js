@@ -21,7 +21,7 @@ const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 function App() {
   const token = useSelector((state) => state.auth.token);
   let routes;
-  if (token) {
+  if (!token) {
     routes = (
       <Switch>
         <Route path="/" exact>
@@ -39,6 +39,9 @@ function App() {
           <Redirect to="/" />
         </Route>
         <Route path="/recycle" exact>
+          <Recycle />
+        </Route>
+        <Route path="/marketplace" exact>
           <Recycle />
         </Route>
         <Route path="/reset-password/:token" exact>
@@ -71,6 +74,9 @@ function App() {
         </Route>
         <Route path="/recycle" exact>
           <Recycle />
+        </Route>
+        <Route path="/marketplace" exact>
+          <Redirect to="/login" />
         </Route>
         <Route path="/reset-password/:token" exact>
           <ResetPassword />

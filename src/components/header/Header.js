@@ -53,6 +53,12 @@ export default function Header() {
             Recycle
           </Link>
           <Link
+            to="/marketplace"
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
+          >
+            Marketplace
+          </Link>
+          <Link
             to="/feedback"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >

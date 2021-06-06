@@ -14,15 +14,22 @@ export default function Hero() {
           <p className="mb-8 leading-relaxed text-gray-100 md:w-3/4 lg:w-2/3">
             Mari kurangi sampah di muka bumi dengan mendaurulang sampah kamu.
             Kami menyediakan alat untuk membantu kamu menentukan sampah yang
-            dapat didaur ulang. Karena setiap usaha kamu sangat berarti bagi
-            bumi kita.
+            dapat didaur ulang. Kamu kemudian dapat menjual hasil daurulang
+            disini atau membeli hasil daurulang orang lain. Karena setiap usaha
+            kamu sangat berarti bagi bumi kita
           </p>
           <div className="flex justify-center">
             <Link
               to="/recycle"
-              className="inline-flex text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-lg"
+              className="inline-flex text-white bg-green-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-md"
             >
               Start Recycle
+            </Link>
+            <Link
+              to="/marketplace"
+              className="inline-flex text-white bg-green-600 border-0 ml-1.5 py-2 px-6 focus:outline-none hover:bg-green-700 rounded text-md"
+            >
+              Marketplace
             </Link>
           </div>
         </div>
