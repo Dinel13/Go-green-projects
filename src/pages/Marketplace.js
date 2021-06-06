@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Pagination from "../components/pagination/Pagination";
 
 import "./marketplace.css";
 
@@ -100,6 +101,7 @@ export default function Marketplace() {
           </div>
         </div>
       </div>
+      <Pagination />
     </section>
   );
 }
