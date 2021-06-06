@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../components/pagination/Pagination";
 import Product from "../components/product/Product";
@@ -6,6 +6,26 @@ import Product from "../components/product/Product";
 import "./marketplace.css";
 
 export default function Marketplace() {
+  const [allProduct, setAllProduct] = useState();
+  useEffect(() => {
+    const getAllPoducts = async () => {
+      try {
+        const result = await fetch(
+          `${process.env.REACT_APP_MRKT_URL}/product/getAll`
+        );
+        const data = await result.json();
+        if (!result.ok) {
+          throw new Error(data.message);
+        }
+        console.log(data);
+        setAllProduct(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllPoducts();
+  }, []);
+
   return (
     <section className="flex flex-col w-screen min-h-screen p-10 bg-gray-100 text-gray-800">
       <h1 className="text-3xl">All Category Recycle Product</h1>
@@ -81,10 +101,10 @@ export default function Marketplace() {
         </button>
       </div>
       <div className="flex flex-wrap -m-4 mt-2">
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {allProduct &&
+          allProduct.map((product) => (
+            <Product product={product} key={product.id} />
+          ))}
       </div>
       <Pagination />
     </section>
