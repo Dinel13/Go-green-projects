@@ -20,7 +20,7 @@ const productSchema = new mongoose.Schema(
     qty: {
       type: Number,
       require: true,
-      min: 1000,
+      min: 0,
     },
     category: {
       type: String,
@@ -55,3 +55,5 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Product", productSchema);
