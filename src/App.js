@@ -1,5 +1,6 @@
 import React, { Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
@@ -18,43 +19,78 @@ const Signup = React.lazy(() => import("./pages/Register"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
 
 function App() {
+  const token = useSelector((state) => state.auth.token);
+  let routes;
+  if (token) {
+    routes = (
+      <Switch>
+        <Route path="/" exact>
+          <Hero />
+          <OurTeam />
+          <Testimonial />
+        </Route>
+        <Route path="/login" exact>
+          <Redirect to="/" />
+        </Route>
+        <Route path="/feedback" exact>
+          <Feedback />
+        </Route>
+        <Route path="/signup" exact>
+          <Redirect to="/" />
+        </Route>
+        <Route path="/recycle" exact>
+          <Recycle />
+        </Route>
+        <Route path="/reset-password/:token" exact>
+          <ResetPassword />
+        </Route>
+        <Route path="/forgot-password" exact>
+          <ForgotPassword />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+    );
+  } else {
+    routes = (
+      <Switch>
+        <Route path="/" exact>
+          <Hero />
+          <OurTeam />
+          <Testimonial />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+        <Route path="/feedback" exact>
+          <Feedback />
+        </Route>
+        <Route path="/signup" exact>
+          <Signup />
+        </Route>
+        <Route path="/recycle" exact>
+          <Recycle />
+        </Route>
+        <Route path="/reset-password/:token" exact>
+          <ResetPassword />
+        </Route>
+        <Route path="/forgot-password" exact>
+          <ForgotPassword />
+        </Route>
+        <Route path="*">
+          <NotFound />
+        </Route>
+      </Switch>
+    );
+  }
   return (
     <>
       <Header />
       <NotifModal />
       <main>
-        <Suspense fallback={<Loading />}>
-          <Switch>
-            <Route path="/" exact>
-              <Hero />
-              <OurTeam />
-              <Testimonial />
-            </Route>
-            <Route path="/login" exact>
-              <Login />
-            </Route>
-            <Route path="/feedback" exact>
-              <Feedback />
-            </Route>
-            <Route path="/signup" exact>
-              <Signup />
-            </Route>
-            <Route path="/recycle" exact>
-              <Recycle />
-            </Route>
-            <Route path="/reset-password/:token" exact>
-              <ResetPassword />
-            </Route>
-            <Route path="/forgot-password" exact>
-              <ForgotPassword />
-            </Route>
-            <Route path="*">
-              <NotFound />
-            </Route>
-          </Switch>
-        </Suspense>
+        <Suspense fallback={<Loading />}>{routes}</Suspense>
       </main>
-
       <Footer />
     </>
   );
