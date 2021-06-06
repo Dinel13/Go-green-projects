@@ -3,7 +3,7 @@ const Product = require("../models/Product");
 
 const create = async (req, res, next) => {
   const {
-    item,
+    name,
     price,
     sellerId,
     qty,
@@ -16,7 +16,7 @@ const create = async (req, res, next) => {
   } = req.body;
 
   const newProduct = new Product({
-    item,
+    name,
     price,
     sellerId,
     qty,
@@ -30,12 +30,28 @@ const create = async (req, res, next) => {
 
   try {
     const result = await newProduct.save();
-    res.status(201).json({ message: result });
+    res.status(201).json({ data: result });
   } catch (error) {
     console.log(error);
-    console.log(error.message);
-    return next(new HttpError("Tidak bisa menyimpan produk", 500));
+    return next(
+      new HttpError(error.message || "Tidak bisa menyimpan produk", 500)
+    );
+  }
+};
+
+const getAll = async (req, res, next) => {
+  try {
+    const products = await Product.find()
+      .select("_id name price sortDesc category image postedBy createdAt")
+      .exec();
+    res.status(200).json({ data: products });
+  } catch (error) {
+    console.log(error);
+    return next(
+      new HttpError(error.message || "Tidak bisa mendapatkan produk", 500)
+    );
   }
 };
 
 exports.create = create;
+exports.getAll = getAll;
