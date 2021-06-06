@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Pagination from "../components/pagination/Pagination";
+import Product from "../components/product/Product";
 
 import "./marketplace.css";
 
@@ -79,27 +80,11 @@ export default function Marketplace() {
           </div>
         </button>
       </div>
-      <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-x-6 gap-y-12 w-full mt-6">
-        {/* Product Tile Start */}
-        <div>
-          <a href="#" className="block h-64 rounded-lg shadow-lg bg-white"></a>
-          <div className="flex items-center justify-between mt-3">
-            <div>
-              <a href="#" className="font-medium">
-                Product Name
-              </a>
-              <a className="flex items-center" href="#">
-                <span className="text-xs font-medium text-gray-600">by</span>
-                <span className="text-xs font-medium ml-1 text-indigo-500">
-                  Store Name
-                </span>
-              </a>
-            </div>
-            <span className="flex items-center h-8 bg-indigo-200 text-indigo-600 text-sm px-2 rounded">
-              $34
-            </span>
-          </div>
-        </div>
+      <div className="flex flex-wrap -m-4 mt-2">
+        <Product />
+        <Product />
+        <Product />
+        <Product />
       </div>
       <Pagination />
     </section>
