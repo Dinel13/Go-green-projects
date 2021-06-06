@@ -1,0 +1,27 @@
+{
+  "name": "marketplace-api",
+  "version": "1.0.0",
+  "description": "api service for go project",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dinel13/Go-green-projects.git"
+  },
+  "author": "salahuddin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dinel13/Go-green-projects/issues"
+  },
+  "homepage": "https://github.com/Dinel13/Go-green-projects#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.12.13"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
