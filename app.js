@@ -1,7 +1,9 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+
 const HttpError = require("./models/http-eror");
+const productRoutes = require("./routes/product");
 
 require("dotenv").config();
 
@@ -15,6 +17,8 @@ app.use(cors("*"));
 app.use("/test", (req, res, next) => {
   res.status(200).json({ message: "api is working" });
 });
+
+app.use("/product", productRoutes);
 
 app.use((req, res, next) => {
   return next(new HttpError("Route Tidak ditemukan", 404));
