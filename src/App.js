@@ -17,6 +17,7 @@ const NotFound = React.lazy(() => import("./pages/NotFound"));
 const Recycle = React.lazy(() => import("./pages/Recycle"));
 const Signup = React.lazy(() => import("./pages/Register"));
 const ResetPassword = React.lazy(() => import("./pages/ResetPassword"));
+const Marketplace = React.lazy(() => import("./pages/Marketplace"));
 
 function App() {
   const token = useSelector((state) => state.auth.token);
@@ -42,7 +43,7 @@ function App() {
           <Recycle />
         </Route>
         <Route path="/marketplace" exact>
-          <Recycle />
+          <Marketplace />
         </Route>
         <Route path="/reset-password/:token" exact>
           <ResetPassword />
