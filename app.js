@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const HttpError = require("./models/http-eror");
 
+require("dotenv").config();
+
 const app = express();
 
 app.use(express.json({ limit: "40mb" }));
@@ -24,16 +26,11 @@ app.use((error, req, res, next) => {
     .json({ message: error.message || "error tidak diketahui" });
 });
 
-const url = "mongodb://127.0.0.1:27017/goproject";
 mongoose
-  .connect(
-    url,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-    //  `mongodb+srv://${process.env.MONGGODB_USER_PASSWORD}@cluster0.enucz.mongodb.net/genbi?retryWrites=true&w=majority`
-  )
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     app.listen(process.env.PORT || 5000);
   })
