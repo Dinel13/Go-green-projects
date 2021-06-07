@@ -5,3 +5,9 @@ README.md
 *.pyd
 __pycache__
 .pytest_cache
+
+.gitignore
+deploy.md
+
+model_v1.h5
+main_old.py

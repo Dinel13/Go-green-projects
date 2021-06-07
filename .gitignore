@@ -1,7 +1,6 @@
-best_model.h5
-fix.h5
+model_v1.h5
+model_v2.h5
 img.jpg
-/uploads
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
