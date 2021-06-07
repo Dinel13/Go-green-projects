@@ -12,14 +12,14 @@ For Capstone Project Bangkit 2021
 ## Team Manut || B21-CAP0199
 
 - **Cloud Computing Path**
-  - [Huddin](https://github.com/Dinel13/ "salahuddin's github profile") (C2082045) as **Full stack Developer**
-  - [Ainun](https://github.com/kazriel/ "Ainun's github profile") (C2082042) as **Cloud Architec and Engineer**
+  - [Huddin](https://github.com/Dinel13/ "salahuddin's github profile") (C2082045@bangkit.academy) as **Full stack Developer**
+  - [Ainun](https://github.com/kazriel/ "Ainun's github profile") (C2082042@bangkit.academy) as **Cloud Architec and Engineer**
 - **Android Path**
-  - [Alawi](https://github.com/wiwittt27/ "Alawi Github profile") (C2082042) as **Android Developer**
-  - [Dicky](https://github.com/dicky7/ "Dicky Github profile") (C2082042) as **Android Developer**
+  - [Alawi](https://github.com/wiwittt27/ "Alawi Github profile") (A1818633@bangkit.academy) as **Android Developer**
+  - [Dicky](https://github.com/dicky7/ "Dicky Github profile") (A2692504@bangkit.academy) as **Android Developer**
 - **Machine Learning Path**
-  - [Okky](https://github.com/lemkova/ "Okky's Github profile") (C2082042) as **Data Scientist**
-  - Shifa (C208204) as **Data Scientist**
+  - [Okky](https://github.com/lemkova/ "Okky's Github profile") (M0060587@bangkit.academy) as **Data Scientist**
+  - Shifa (M0151385@bangkit.academy) as **Data Scientist**
     <br/>
 
 ---
