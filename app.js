@@ -33,13 +33,10 @@ app.use((error, req, res, next) => {
 // app.listen(process.env.PORT || 8080);
 
 mongoose
-  .connect(
-    "mongodb+srv://admin:B21-cap0199@cluster0.8hkht.mongodb.net/goproject?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then((result) => {
     app.listen(process.env.PORT || 8080);
   })
