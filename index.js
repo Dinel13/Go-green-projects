@@ -217,10 +217,11 @@ const recomendation = (req, res) => {
   ];
 
   if (req.method === "POST") {
-    const category = req.body.category;
+    let category = req.body.category;
     if (!category) {
       res.status(401).send({ message: "category tidak boleh kosong" });
     }
+    category = category.toLowerCase();
     const result = waste.filter((item) => item.name === category);
 
     if (result.length <= 0) {
