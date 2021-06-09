@@ -10,6 +10,7 @@ export default function OneCategory({ category }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log(category);
       setData(null);
       setStatus((prevState) => ({
         ...prevState,
@@ -21,7 +22,7 @@ export default function OneCategory({ category }) {
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ category }),
+            body: JSON.stringify({ category: category }),
           }
         );
         const data = await respon.json();
@@ -32,6 +33,7 @@ export default function OneCategory({ category }) {
             error: "Tidak bisa mendapatkan data",
           }));
         }
+        console.log(data);
         setData(data);
         setStatus((prevState) => ({
           ...prevState,
@@ -120,8 +122,8 @@ export default function OneCategory({ category }) {
                             stroke="currentColor"
                             stroke-width="2"
                             fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                           >
                             <path d="M5 12h14"></path>
                             <path d="M12 5l7 7-7 7"></path>

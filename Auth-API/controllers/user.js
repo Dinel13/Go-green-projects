@@ -317,7 +317,25 @@ const setNewPassword = async (req, res, next) => {
   });
 };
 
+const cekAuth = async (req, res, next) => {
+  try {
+    const token = req.body.token;
+    if (!token) {
+      throw new Error("Anda tidak dikenali!");
+    }
+    const decodedToken = jwt.verify(token, process.env.JWT_KEY);
+    if (!decodedToken) {
+      return next(new HttpError("anda tidak dikenali, login lagi", 401));
+    }
+    const user = await User.findByEmail(decodedToken.email);
+    res.status(200).json({ user: user });
+  } catch (error) {
+    return next(new HttpError(error || "Anda tidak dikenali,!", 401));
+  }
+};
+
 exports.signup = signup;
 exports.login = login;
 exports.forgotPassword = forgotPassword;
 exports.setNewPassword = setNewPassword;
+exports.cekAuth = cekAuth;

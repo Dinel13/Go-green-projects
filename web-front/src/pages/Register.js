@@ -13,9 +13,10 @@ export default function Register() {
 
   const successLogin = () => {
     setPending(false);
-    email.current.value = "";
-    password.current.value = "";
-    name.current.value = "";
+    // will eror because this ref is null since page change
+    // email.current.value = "";
+    // password.current.value = "";
+    // name.current.value = "";
     setTimeout(() => history.push("/"), 2000);
   };
 

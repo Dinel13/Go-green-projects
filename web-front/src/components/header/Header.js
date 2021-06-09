@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import logo from "../../assets/logo.png";
-import { logout } from "../../store/authSlice";
 
 export default function Header() {
   const token = useSelector((state) => state.auth.token);
-  const dispatch = useDispatch();
 
   const clickMenu = () => {
     const navItem = document.getElementById("nav-item");
@@ -22,7 +20,7 @@ export default function Header() {
     }
   };
   return (
-    <nav className="flex items-center justify-between flex-wrap bg-teal p-6 bg-green-500">
+    <nav className="flex items-center justify-between flex-wrap bg-teal px-6 py-4 bg-green-500">
       <div className="flex items-center flex-no-shrink text-white mr-6">
         <img className="rounded-full w-10 mr-2" src={logo} alt="logo" />
         <Link to="/" className="font-semibold text-xl tracking-tight">
@@ -53,6 +51,12 @@ export default function Header() {
             Recycle
           </Link>
           <Link
+            to="/marketplace"
+            className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
+          >
+            Marketplace
+          </Link>
+          <Link
             to="/feedback"
             className="block mt-4 lg:inline-block lg:mt-0 text-teal-lighter hover:text-white mr-4"
           >
@@ -60,25 +64,36 @@ export default function Header() {
           </Link>
         </div>
         {token ? (
-          <div>
-            <button
-              onClick={() => dispatch(logout())}
-              className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white mt-4 lg:mt-0"
+          <div className="flex items-end">
+            <Link
+              to="/myaccount"
+              className="inline-flex items-center text-sm mr-2 p-2 leading-none  border border-transparent rounded text-gray-50 bg-green-700 hover:bg-green-800"
             >
-              Log Out
-            </button>
+              <svg
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                className="w-4 h-4 mr-1"
+                viewBox="0 0 24 24"
+              >
+                <path d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              My Account
+            </Link>
           </div>
         ) : (
-          <div>
+          <div className="flex items-end">
             <Link
               to="/login"
-              className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white mt-4 lg:mt-0"
+              className="inline-block text-sm mr-2 px-4 py-2 leading-none border rounded text-white border-white hover:text-gray-800 hover:border-transparent hover:bg-white"
             >
               Login
             </Link>
             <Link
               to="/signup"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-green-700 hover:border-transparent hover:text-teal hover:bg-green-800 mt-4 lg:mt-0"
+              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white bg-green-700 hover:border-transparent hover:text-teal hover:bg-green-800"
             >
               Sign up
             </Link>

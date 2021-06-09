@@ -12,41 +12,32 @@ labels = {0: "cardboard", 1: "glass", 2: "metal", 3: "paper", 4: "plastic", 5: "
 # Process image and predict label
 def processImg(IMG_PATH):
     # load model
-    model = load_model("best_model.h5",custom_objects={'KerasLayer':tfhub.KerasLayer})
+    model = load_model("model_v2.h5", custom_objects={"KerasLayer": tfhub.KerasLayer})
 
     img = image.load_img(IMG_PATH, target_size=(224, 224))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     images = np.vstack([x])
-    images /= 255 # because on train and test image is normalized, on image predict supposed to be too.
-    classes = model.predict(images, 64) # the value is not always 1 and 0 because of probabilities
-    predicted_class_indices=np.argmax(classes) # use to check prediction that have higher probabilities
-
+    images /= 255  # because on train and test image is normalized, on image predict supposed to be too.
+    classes = model.predict(
+        images, 64
+    )  # the value is not always 1 and 0 because of probabilities
+    predicted_class_indices = np.argmax(
+        classes
+    )  # use to check prediction that have higher probabilities
 
     if predicted_class_indices == 0:
-        return 'Cardboard'
+        return "Cardboard"
     elif predicted_class_indices == 1:
-        return 'Glass'
+        return "Glass"
     elif predicted_class_indices == 2:
-        return 'Metal'
+        return "Metal"
     elif predicted_class_indices == 3:
-        return 'Paper'
+        return "Paper"
     elif predicted_class_indices == 4:
-        return 'Plastic'
+        return "Plastic"
     else:
-        return 'Trash'
-
-    # # Preprocess image
-    # img = image.load_img(IMG_PATH, target_size=(300, 300))
-    # img = image.img_to_array(img, dtype=np.uint8)
-    # img = np.array(img) / 255.0
-
-    # p = model.predict(img[np.newaxis, ...])
-
-    # print("Maximum Probability: ", np.max(p[0], axis=-1))
-    # predicted_class = labels[np.argmax(p[0], axis=-1)]
-    # print("Classified:", predicted_class)
-    # return predicted_class
+        return "Trash"
 
 
 # Initializing flask application
@@ -64,8 +55,8 @@ def main():
 # Process images
 @app.route("/process", methods=["POST"])
 def processReq():
-    if 'img' not in request.files:
-        return jsonify({"error" : "Image is empty"})
+    if "img" not in request.files:
+        return jsonify({"error": "Image is empty"})
     data = request.files["img"]
     data.save("img.jpg")
 
@@ -75,5 +66,5 @@ def processReq():
 
 
 if __name__ == "__main__":
-    # app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
-    app.run(host="127.0.0.1", port=8080, debug=True)
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    # app.run(host="127.0.0.1", port=8080, debug=True)

@@ -12,8 +12,9 @@ export default function Login() {
 
   const successLogin = () => {
     setPending(false);
-    email.current.value = "";
-    password.current.value = "";
+    // will eror because this ref is null since page change
+    // email.current.value = "";
+    // password.current.value = "";
     setTimeout(() => history.push("/"), 2000);
   };
 
