@@ -47,6 +47,9 @@ For Capstone Project Bangkit 2021
 - **NEWSLETTER API** https://github.com/Dinel13/Go-green-projects/tree/Newsletter-Api
   - Use **_Node.js Express_** framework and deploy with **_Cloud Function_** **_Firestore_** as noSql database on Google Cloud Platform
     <br/>
+- **MARKETPLACE API** https://github.com/Dinel13/Go-green-projects/tree/marketplace-api
+  - Use **_Node.js Express_** framework and deploy with **_Cloud Run_** and **_MongoDB_** as noSql database
+   <br/>
 - **FRONT-END** https://github.com/Dinel13/Go-green-projects/tree/frontend-web
   - Use **_React.js, Redux_** and **_Tailwind_** library and deploy with **_Cloud Run_** that consume all API service use **_REST-API_** from Google Cloud Platform
   - URL https://frontend-rupnuawd4a-et.a.run.app/
@@ -57,7 +60,7 @@ For Capstone Project Bangkit 2021
 
 ## Design Infrastructure
 
-![Design Infrastructure revised](https://user-images.githubusercontent.com/70701995/120318678-b3e6b100-c312-11eb-8854-fe2c4db8ff40.png)
+![Design Infrastructure revised](https://raw.githubusercontent.com/Dinel13/Go-green-projects/main/Design_Infrastructure_v3.png)
 
 **Backgrounder:**
 
